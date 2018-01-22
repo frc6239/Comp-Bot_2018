@@ -43,14 +43,16 @@ public class RobotMap {
 	public Encoder backRightSpeedEnc;
 	public Encoder backLeftRotEnc;
 	public Encoder backLeftSpeedEnc;
+	//Declare SwerveWheels
 	public SwerveWheel frontRight;
 	public SwerveWheel frontLeft;
 	public SwerveWheel backRight;
 	public SwerveWheel backLeft;
+	//Declare SwerveDrive
 	public SwerveDrive driveTrain;
 	
 	RobotMap() {
-		//Finalize Spark declaration
+		//Finalize Spark declaration in constructor
 		frontRightRotControl = new Spark(0);
 		frontRightSpeedControl = new Spark(1);
 		frontLeftRotControl = new Spark(2);
@@ -60,7 +62,7 @@ public class RobotMap {
 		backLeftRotControl = new Spark(6);
 		backLeftSpeedControl = new Spark(7);
 		//If we use the navx we will be able to have enough DIO Ports to support all the encoders
-		//Finalize Encoder Declaration
+		//Finalize Encoder Declaration in constructor
 		frontRightRotEnc = new Encoder(0, 1);
 		frontRightSpeedEnc = new Encoder(2, 3);
 		frontLeftRotEnc = new Encoder(4, 5);
@@ -69,10 +71,12 @@ public class RobotMap {
 		backRightSpeedEnc = new Encoder(10, 11);
 		backLeftRotEnc = new Encoder(12, 13);
 		backLeftSpeedEnc = new Encoder(14, 15);
-		SwerveWheel frontRight = new SwerveWheel(Robot.frontRightRotation, Robot.frontRightSpeed);
-		SwerveWheel frontLeft = new SwerveWheel(Robot.frontLeftRotation, Robot.frontLeftSpeed);
-		SwerveWheel backRight = new SwerveWheel(Robot.backRightRotation, Robot.backRightSpeed);
-		SwerveWheel backLeft = new SwerveWheel(Robot.backLeftRotation, Robot.backLeftSpeed);
+		//Finalize declaration of SwerveWheels
+		frontRight = new SwerveWheel(Robot.frontRightRotation, Robot.frontRightSpeed);
+		frontLeft = new SwerveWheel(Robot.frontLeftRotation, Robot.frontLeftSpeed);
+		backRight = new SwerveWheel(Robot.backRightRotation, Robot.backRightSpeed);
+		backLeft = new SwerveWheel(Robot.backLeftRotation, Robot.backLeftSpeed);
+		//Finalize declaration of SwerveDrive
 		driveTrain = new SwerveDrive(frontRight, frontLeft, backRight, backLeft);
 		
 	}

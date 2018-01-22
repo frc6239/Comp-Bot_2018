@@ -7,6 +7,8 @@ import edu.wpi.first.wpilibj.command.Command;
 public class DriveCommand extends Command {
 	
 	public DriveCommand() {
+		//Link to subsystem
+		//TODO maybe remove this if not work, had problems in past
 		requires(Robot.DRIVE_SUB);
 	}
 
@@ -17,6 +19,7 @@ public class DriveCommand extends Command {
 
 	@Override
 	protected void execute() {
+		//Execute the drive command in subsystem
 		Robot.DRIVE_SUB.drive();
 	}
 

@@ -28,11 +28,11 @@ public class Robot extends IterativeRobot {
 	
 	public void robotInit() {
 		
-		//Declare Subsystems
+		//Declare Subsystems in robotInit, like a constructor
 		oi = new OI();
 		robotmap = new RobotMap();
 		DRIVE_SUB = new DriveSubsystem();
-		//Declare PIDControllers
+		//Declare PIDControllers in robotInit, /\
 		frontRightRotation = new PIDController(0.1, 0.1, 0, robotmap.frontRightRotEnc, robotmap.frontRightRotControl);
 		frontRightSpeed = new PIDController(0.1, 0.1, 0, robotmap.frontRightSpeedEnc, robotmap.frontRightSpeedControl);
 		frontLeftSpeed = new PIDController(0.1, 0.1, 0, robotmap.frontLeftSpeedEnc, robotmap.frontLeftSpeedControl);
