@@ -35,6 +35,7 @@ public class OI {
 	// Start the command when the button is released and let it run the command
 	// until it is finished as determined by it's isFinished method.
 	// button.whenReleased(new ExampleCommand());
+	
 	//Declare the Joysticks for the drive.
 	public Joystick stickcontrollerL;
 	public Joystick stickcontrollerR;

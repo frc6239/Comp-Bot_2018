@@ -12,9 +12,11 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 
 public class Robot extends IterativeRobot {
 
+	//declare subsystems
     public static OI oi;
     public static RobotMap robotmap;
     public static DriveSubsystem DRIVE_SUB;
+    //declare PIDControllers
     public static PIDController frontRightRotation;
     public static PIDController frontRightSpeed;
     public static PIDController frontLeftSpeed;
@@ -23,6 +25,7 @@ public class Robot extends IterativeRobot {
     public static PIDController backRightRotation;
     public static PIDController backLeftSpeed;
     public static PIDController backLeftRotation;
+    //variables for drive, google it if you want to know what they mean
     public static double wheelbase = 0;
     public static double trackwidth = 0;
 	

@@ -77,7 +77,7 @@ public class RobotMap {
 		backRight = new SwerveWheel(Robot.backRightRotation, Robot.backRightSpeed);
 		backLeft = new SwerveWheel(Robot.backLeftRotation, Robot.backLeftSpeed);
 		//Finalize declaration of SwerveDrive
-		driveTrain = new SwerveDrive(frontRight, frontLeft, backRight, backLeft);
+		driveTrain = new SwerveDrive(frontRight, frontLeft, backLeft, backRight);
 		
 	}
 }
