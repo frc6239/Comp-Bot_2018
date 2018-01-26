@@ -2,6 +2,7 @@ package org.usfirst.frc.team6239.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -39,10 +40,11 @@ public class OI {
 	//Declare the Joysticks for the drive.
 	public Joystick stickcontrollerL;
 	public Joystick stickcontrollerR;
-	
+	public Button lift;
 	
 	OI() {
 		stickcontrollerL = new Joystick(0);
 		stickcontrollerR = new Joystick(1);
+		lift = new JoystickButton(stickcontrollerR, 2);
 	}
 }
