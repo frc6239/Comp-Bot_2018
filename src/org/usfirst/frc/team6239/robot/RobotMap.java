@@ -33,6 +33,8 @@ public class RobotMap {
 	public Spark backRightSpeedControl;
 	public Spark backLeftRotControl;
 	public Spark backLeftSpeedControl;
+	public Spark grabberLeft;
+	public Spark grabberRight;
 	
 	//Declaring all encoders
 	public Encoder frontRightRotEnc;
@@ -61,6 +63,8 @@ public class RobotMap {
 		backRightSpeedControl = new Spark(5);
 		backLeftRotControl = new Spark(6);
 		backLeftSpeedControl = new Spark(7);
+		grabberLeft = new Spark(8);
+		grabberRight = new Spark(9);
 		//If we use the navx we will be able to have enough DIO Ports to support all the encoders
 		//Finalize Encoder Declaration in constructor
 		frontRightRotEnc = new Encoder(0, 1);

@@ -39,4 +39,10 @@ public class OI {
 	//Declare the Joysticks for the drive.
 	public Joystick stickcontrollerL;
 	public Joystick stickcontrollerR;
+	
+	
+	OI() {
+		stickcontrollerL = new Joystick(0);
+		stickcontrollerR = new Joystick(1);
+	}
 }
