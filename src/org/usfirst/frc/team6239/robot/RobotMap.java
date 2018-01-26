@@ -35,6 +35,7 @@ public class RobotMap {
 	public Spark backLeftSpeedControl;
 	public Spark grabberLeft;
 	public Spark grabberRight;
+	public Spark lifter;
 	
 	//Declaring all encoders
 	public Encoder frontRightRotEnc;
@@ -55,6 +56,7 @@ public class RobotMap {
 	
 	RobotMap() {
 		//Finalize Spark declaration in constructor
+		//probably have to use navx for extra pwm ports too
 		frontRightRotControl = new Spark(0);
 		frontRightSpeedControl = new Spark(1);
 		frontLeftRotControl = new Spark(2);
@@ -65,6 +67,7 @@ public class RobotMap {
 		backLeftSpeedControl = new Spark(7);
 		grabberLeft = new Spark(8);
 		grabberRight = new Spark(9);
+		lifter = new Spark(10);
 		//If we use the navx we will be able to have enough DIO Ports to support all the encoders
 		//Finalize Encoder Declaration in constructor
 		frontRightRotEnc = new Encoder(0, 1);

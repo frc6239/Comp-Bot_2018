@@ -2,6 +2,7 @@
 package org.usfirst.frc.team6239.robot;
 
 import org.usfirst.frc.team6239.robot.subsystems.DriveSubsystem;
+import org.usfirst.frc.team6239.robot.subsystems.liftsubsystem;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.PIDController;
@@ -16,6 +17,7 @@ public class Robot extends IterativeRobot {
     public static OI oi;
     public static RobotMap robotmap;
     public static DriveSubsystem DRIVE_SUB;
+    public static liftsubsystem liftsub;
     //declare PIDControllers
     public static PIDController frontRightRotation;
     public static PIDController frontRightSpeed;
@@ -35,6 +37,7 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
 		robotmap = new RobotMap();
 		DRIVE_SUB = new DriveSubsystem();
+		liftsub = new liftsubsystem();
 		//Declare PIDControllers in robotInit, /\
 		frontRightRotation = new PIDController(0.1, 0.1, 0, robotmap.frontRightRotEnc, robotmap.frontRightRotControl);
 		frontRightSpeed = new PIDController(0.1, 0.1, 0, robotmap.frontRightSpeedEnc, robotmap.frontRightSpeedControl);
