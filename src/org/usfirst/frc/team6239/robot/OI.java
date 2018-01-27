@@ -1,5 +1,7 @@
 package org.usfirst.frc.team6239.robot;
 
+import org.usfirst.frc.team6239.robot.commands.liftcommand;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -46,5 +48,6 @@ public class OI {
 		stickcontrollerL = new Joystick(0);
 		stickcontrollerR = new Joystick(1);
 		lift = new JoystickButton(stickcontrollerR, 2);
+		lift.whileHeld(new liftcommand());
 	}
 }

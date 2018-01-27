@@ -14,13 +14,13 @@ public class liftsubsystem extends Subsystem{
 	
 	public void liftup() {
 		
-		
+		Robot.robotmap.lifter.set(1);
 		
 	}
 	
 	public void liftdown() {
 		
-		
+		Robot.robotmap.lifter.set(-1);
 		
 	}
 	

@@ -10,7 +10,6 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 
 
 
-
 public class Robot extends IterativeRobot {
 
 	//declare subsystems
@@ -95,7 +94,7 @@ public class Robot extends IterativeRobot {
 
 	
 	public void teleopPeriodic() {
-		
+		Scheduler.getInstance().run();
 		
 		
 	}
