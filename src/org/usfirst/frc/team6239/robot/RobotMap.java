@@ -1,5 +1,6 @@
 package org.usfirst.frc.team6239.robot;
 
+import org.usfirst.frc.team6239.robot.swervedrive.AbsoluteEncoder;
 import org.usfirst.frc.team6239.robot.swervedrive.SwerveDrive;
 import org.usfirst.frc.team6239.robot.swervedrive.SwerveWheel;
 
@@ -39,13 +40,13 @@ public class RobotMap {
 	
 	//Declaring all encoders
 	public Encoder frontRightRotEnc;
-	public Encoder frontRightSpeedEnc;
+	public AbsoluteEncoder frontRightSpeedEnc;
 	public Encoder frontLeftRotEnc;
-	public Encoder frontLeftSpeedEnc;
+	public AbsoluteEncoder frontLeftSpeedEnc;
 	public Encoder backRightRotEnc;
-	public Encoder backRightSpeedEnc;
+	public AbsoluteEncoder backRightSpeedEnc;
 	public Encoder backLeftRotEnc;
-	public Encoder backLeftSpeedEnc;
+	public AbsoluteEncoder backLeftSpeedEnc;
 	//Declare SwerveWheels
 	public SwerveWheel frontRight;
 	public SwerveWheel frontLeft;
@@ -71,13 +72,13 @@ public class RobotMap {
 		//If we use the navx we will be able to have enough DIO Ports to support all the encoders
 		//Finalize Encoder Declaration in constructor
 		frontRightRotEnc = new Encoder(0, 1);
-		frontRightSpeedEnc = new Encoder(2, 3);
-		frontLeftRotEnc = new Encoder(4, 5);
-		frontLeftSpeedEnc = new Encoder(6, 7);
-		backRightRotEnc = new Encoder(8, 9);
-		backRightSpeedEnc = new Encoder(10, 11);
-		backLeftRotEnc = new Encoder(12, 13);
-		backLeftSpeedEnc = new Encoder(14, 15);
+		frontRightSpeedEnc = new AbsoluteEncoder(2);
+		frontLeftRotEnc = new Encoder(3, 4);
+		frontLeftSpeedEnc = new AbsoluteEncoder(5);
+		backRightRotEnc = new Encoder(6, 7);
+		backRightSpeedEnc = new AbsoluteEncoder(8);
+		backLeftRotEnc = new Encoder(9, 10);
+		backLeftSpeedEnc = new AbsoluteEncoder(11);
 		//Finalize declaration of SwerveWheels
 		frontRight = new SwerveWheel(Robot.frontRightRotation, Robot.frontRightSpeed);
 		frontLeft = new SwerveWheel(Robot.frontLeftRotation, Robot.frontLeftSpeed);
