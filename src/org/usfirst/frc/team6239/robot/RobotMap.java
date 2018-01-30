@@ -2,11 +2,9 @@ package org.usfirst.frc.team6239.robot;
 
 import org.usfirst.frc.team6239.robot.swervedrive.AbsoluteEncoder;
 import org.usfirst.frc.team6239.robot.swervedrive.SwerveDrive;
-import org.usfirst.frc.team6239.robot.swervedrive.SwerveWheel;
+import org.usfirst.frc.team6239.robot.swervedrive.WheelDrive;
 
-import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Spark;
-import edu.wpi.first.wpilibj.PIDController;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -39,19 +37,15 @@ public class RobotMap {
 	public Spark lifter;
 	
 	//Declaring all encoders
-	public Encoder frontRightRotEnc;
-	public AbsoluteEncoder frontRightSpeedEnc;
-	public Encoder frontLeftRotEnc;
-	public AbsoluteEncoder frontLeftSpeedEnc;
-	public Encoder backRightRotEnc;
-	public AbsoluteEncoder backRightSpeedEnc;
-	public Encoder backLeftRotEnc;
-	public AbsoluteEncoder backLeftSpeedEnc;
+	public AbsoluteEncoder frontRightRotEnc;
+	public AbsoluteEncoder frontLeftRotEnc;
+	public AbsoluteEncoder backRightRotEnc;
+	public AbsoluteEncoder backLeftRotEnc;
 	//Declare SwerveWheels
-	public SwerveWheel frontRight;
-	public SwerveWheel frontLeft;
-	public SwerveWheel backRight;
-	public SwerveWheel backLeft;
+	public WheelDrive frontRight;
+	public WheelDrive frontLeft;
+	public WheelDrive backRight;
+	public WheelDrive backLeft;
 	//Declare SwerveDrive
 	public SwerveDrive driveTrain;
 	
@@ -71,19 +65,15 @@ public class RobotMap {
 		lifter = new Spark(10);
 		//If we use the navx we will be able to have enough DIO Ports to support all the encoders
 		//Finalize Encoder Declaration in constructor
-		frontRightRotEnc = new Encoder(0, 1);
-		frontRightSpeedEnc = new AbsoluteEncoder(2);
-		frontLeftRotEnc = new Encoder(3, 4);
-		frontLeftSpeedEnc = new AbsoluteEncoder(5);
-		backRightRotEnc = new Encoder(6, 7);
-		backRightSpeedEnc = new AbsoluteEncoder(8);
-		backLeftRotEnc = new Encoder(9, 10);
-		backLeftSpeedEnc = new AbsoluteEncoder(11);
+		frontRightRotEnc = new AbsoluteEncoder(0);
+		frontLeftRotEnc = new AbsoluteEncoder(1);
+		backRightRotEnc = new AbsoluteEncoder(2);
+		backLeftRotEnc = new AbsoluteEncoder(3);
 		//Finalize declaration of SwerveWheels
-		frontRight = new SwerveWheel(Robot.frontRightRotation, Robot.frontRightSpeed);
-		frontLeft = new SwerveWheel(Robot.frontLeftRotation, Robot.frontLeftSpeed);
-		backRight = new SwerveWheel(Robot.backRightRotation, Robot.backRightSpeed);
-		backLeft = new SwerveWheel(Robot.backLeftRotation, Robot.backLeftSpeed);
+		frontRight = new WheelDrive(frontRightRotControl, frontRightSpeedControl, Robot.frontRightRotation);
+		frontLeft = new WheelDrive(frontLeftRotControl, frontLeftSpeedControl, Robot.frontLeftRotation);
+		backRight = new WheelDrive(backRightRotControl, backRightSpeedControl, Robot.backRightRotation);
+		backLeft = new WheelDrive(backLeftRotControl, backLeftSpeedControl, Robot.backLeftRotation);
 		//Finalize declaration of SwerveDrive
 		driveTrain = new SwerveDrive(frontRight, frontLeft, backLeft, backRight);
 		

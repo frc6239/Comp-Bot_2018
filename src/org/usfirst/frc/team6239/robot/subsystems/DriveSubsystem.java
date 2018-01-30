@@ -16,6 +16,6 @@ public class DriveSubsystem extends Subsystem {
 	}
 	//Start driving
 	public void drive() {
-		Robot.robotmap.driveTrain.drive(Robot.oi.stickcontrollerL, Robot.oi.stickcontrollerR);
+		Robot.robotmap.driveTrain.drive(Robot.oi.stickcontrollerL.getX(), Robot.oi.stickcontrollerL.getY(), Robot.oi.stickcontrollerR.getX());
 	}
 }

@@ -39,12 +39,8 @@ public class Robot extends IterativeRobot {
 		liftsub = new liftsubsystem();
 		//Declare PIDControllers in robotInit, /\
 		frontRightRotation = new PIDController(0.1, 0.1, 0, robotmap.frontRightRotEnc, robotmap.frontRightRotControl);
-		frontRightSpeed = new PIDController(0.1, 0.1, 0, robotmap.frontRightSpeedEnc, robotmap.frontRightSpeedControl);
-		frontLeftSpeed = new PIDController(0.1, 0.1, 0, robotmap.frontLeftSpeedEnc, robotmap.frontLeftSpeedControl);
 		frontLeftRotation = new PIDController(0.1, 0.1, 0, robotmap.frontLeftRotEnc, robotmap.frontLeftRotControl);
-		backRightSpeed = new PIDController(0.1, 0.1, 0, robotmap.backRightSpeedEnc, robotmap.backRightSpeedControl);
 		backRightRotation = new PIDController(0.1, 0.1, 0, robotmap.backRightRotEnc, robotmap.backRightRotControl);
-		backLeftSpeed = new PIDController(0.1, 0.1, 0, robotmap.backLeftSpeedEnc, robotmap.backLeftSpeedControl);
 		backLeftRotation = new PIDController(0.1, 0.1, 0, robotmap.backLeftRotEnc, robotmap.backLeftRotControl);
 		robotmap.driveTrain.setWheelbaseTrackwidth(wheelbase, trackwidth);
 	}
