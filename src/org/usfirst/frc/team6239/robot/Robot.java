@@ -19,12 +19,8 @@ public class Robot extends IterativeRobot {
     public static liftsubsystem liftsub;
     //declare PIDControllers
     public static PIDController frontRightRotation;
-    public static PIDController frontRightSpeed;
-    public static PIDController frontLeftSpeed;
     public static PIDController frontLeftRotation;
-    public static PIDController backRightSpeed;
     public static PIDController backRightRotation;
-    public static PIDController backLeftSpeed;
     public static PIDController backLeftRotation;
     //variables for drive, google it if you want to know what they mean
     public static double wheelbase = 0;
