@@ -42,12 +42,18 @@ public class OI {
 	//Declare the Joysticks for the drive.
 	public Joystick stickcontrollerL;
 	public Joystick stickcontrollerR;
-	public Button lift;
+	public Joystick gamepad;
+	public Button liftup;
+	public Button liftdown;
+	public Button grabin;
+	public Button grabout;
 	
 	OI() {
 		stickcontrollerL = new Joystick(0);
 		stickcontrollerR = new Joystick(1);
-		lift = new JoystickButton(stickcontrollerR, 2);
-		lift.whileHeld(new liftcommand());
+		liftup = new JoystickButton(gamepad, 2);
+		liftup.whileHeld(new liftcommand(true));
+		liftdown = new JoystickButton(gamepad, 3);
+		liftdown.whileHeld(new liftcommand(false));
 	}
 }
