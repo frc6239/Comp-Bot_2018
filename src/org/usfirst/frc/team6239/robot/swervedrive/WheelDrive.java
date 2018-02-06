@@ -17,10 +17,12 @@ public class WheelDrive {
 		this.speedMotor = speedMotor;
 		this.pidController = pidController;
 		
-		this.pidController.setOutputRange (-1, 1);
-	    this.pidController.setContinuous ();
-	    this.pidController.enable ();
-		
+	}
+	
+	public void wheelInit() {
+		pidController.setOutputRange(-1, 1);
+	    pidController.setContinuous();
+	    pidController.enable();
 	}
 	
 	public void drive (double speed, double angle) {

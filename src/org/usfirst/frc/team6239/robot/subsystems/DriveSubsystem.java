@@ -10,7 +10,7 @@ public class DriveSubsystem extends Subsystem {
 	protected void initDefaultCommand() {
 		//Link to command and keep it running throughout the match, so it doesn't need a
 		//button bound to it
-		setDefaultCommand(new DriveCommand());
+		//setDefaultCommand(new DriveCommand());
 
 
 	}

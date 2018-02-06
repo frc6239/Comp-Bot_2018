@@ -49,16 +49,17 @@ public class RobotMap {
 	public SwerveDrive driveTrain;
 	
 	RobotMap() {
+		
 		//Finalize Spark declaration in constructor
 		//probably have to use navx for extra pwm ports too
-		frontRightRotControl = new Spark(0);
-		frontRightSpeedControl = new Spark(1);
-		frontLeftRotControl = new Spark(2);
-		frontLeftSpeedControl = new Spark(3);
-		backRightRotControl = new Spark(4);
-		backRightSpeedControl = new Spark(5);
-		backLeftRotControl = new Spark(6);
-		backLeftSpeedControl = new Spark(7);
+		frontRightSpeedControl = new Spark(0);
+		frontRightRotControl = new Spark(1);
+		frontLeftSpeedControl = new Spark(2);
+		frontLeftRotControl = new Spark(3);
+		backRightSpeedControl = new Spark(4);
+		backRightRotControl = new Spark(5);
+		backLeftSpeedControl = new Spark(6);
+		backLeftRotControl = new Spark(7);
 		grabber = new Spark(8);
 		lifter = new Spark(9);
 		//If we use the navx we will be able to have enough DIO Ports to support all the encoders
@@ -67,7 +68,7 @@ public class RobotMap {
 		frontLeftRotEnc = new AbsoluteEncoder(1);
 		backRightRotEnc = new AbsoluteEncoder(2);
 		backLeftRotEnc = new AbsoluteEncoder(3);
-		//Finalize declaration of SwerveWheels
+		//Finalize declaration of WheelDrives
 		frontRight = new WheelDrive(frontRightRotControl, frontRightSpeedControl, Robot.frontRightRotation);
 		frontLeft = new WheelDrive(frontLeftRotControl, frontLeftSpeedControl, Robot.frontLeftRotation);
 		backRight = new WheelDrive(backRightRotControl, backRightSpeedControl, Robot.backRightRotation);

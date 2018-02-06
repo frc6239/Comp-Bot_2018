@@ -52,8 +52,8 @@ public class OI {
 		stickcontrollerL = new Joystick(0);
 		stickcontrollerR = new Joystick(1);
 		liftup = new JoystickButton(gamepad, 2);
-		liftup.whileHeld(new liftcommand(true));
+		//liftup.whileHeld(new liftcommand(true));
 		liftdown = new JoystickButton(gamepad, 3);
-		liftdown.whileHeld(new liftcommand(false));
+		//liftdown.whileHeld(new liftcommand(false));
 	}
 }
