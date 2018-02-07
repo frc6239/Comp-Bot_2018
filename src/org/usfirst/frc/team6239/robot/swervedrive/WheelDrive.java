@@ -17,7 +17,7 @@ public class WheelDrive {
 		pidController = new PIDController (1, 0, 0, new AbsoluteEncoder(encoder), this.angleMotor);
 		
 		pidController.setOutputRange(-1, 1);
-	    //pidController.setContinuous();
+	    pidController.setContinuous();
 	    pidController.enable();
 	}
 	

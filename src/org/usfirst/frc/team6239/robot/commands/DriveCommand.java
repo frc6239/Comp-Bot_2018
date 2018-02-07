@@ -9,7 +9,7 @@ public class DriveCommand extends Command {
 	public DriveCommand() {
 		//Link to subsystem
 		//TODO maybe remove this if not work, had problems in past
-		//requires(Robot.DRIVE_SUB);
+		requires(Robot.DRIVE_SUB);
 	}
 
 	@Override

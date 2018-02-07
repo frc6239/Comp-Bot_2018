@@ -31,7 +31,7 @@ public class Robot extends IterativeRobot {
 		DRIVE_SUB = new DriveSubsystem();
 		liftsub = new liftsubsystem();
 		//Declare PIDControllers in robotInit, /\
-		RobotMap.driveTrain.setWheelbaseTrackwidth(wheelbase, trackwidth);
+		//RobotMap.driveTrain.setWheelbaseTrackwidth(wheelbase, trackwidth);
 	}
 
 	
@@ -72,7 +72,7 @@ public class Robot extends IterativeRobot {
 
 
 	public void autonomousPeriodic() {
-		Scheduler.getInstance().run();
+		//Scheduler.getInstance().run();
 		
 		
 	}

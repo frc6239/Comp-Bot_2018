@@ -39,9 +39,14 @@ public class SwerveDrive {
 	    double backLeftAngle = Math.atan2 (a, c) / Math.PI;
 	    double frontRightAngle = Math.atan2 (b, d) / Math.PI;
 	    double frontLeftAngle = Math.atan2 (b, c) / Math.PI;
-	    System.out.println(backRightSpeed);
-	    System.out.println(backLeftSpeed);
 	    System.out.println(frontRightSpeed);
+	    System.out.println(frontRightAngle);
+	    System.out.println(frontLeftSpeed);
+	    System.out.println(frontLeftAngle);
+	    System.out.println(backLeftSpeed);
+	    System.out.println(backLeftAngle);
+	    System.out.println(backRightSpeed);
+	    System.out.println(backRightAngle);
 	    
 	    backRight.drive (backRightSpeed, backRightAngle);
 	    backLeft.drive (backLeftSpeed, backLeftAngle);

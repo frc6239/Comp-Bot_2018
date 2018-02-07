@@ -24,6 +24,7 @@ public class RobotMap {
 	// public static int rangefinderModule = 1;
 	
 	//Declaring all sparks
+	
 	public Spark frontRightRotControl;
 	public Spark frontRightSpeedControl;
 	public Spark frontLeftRotControl;
@@ -46,13 +47,14 @@ public class RobotMap {
 	public static WheelDrive backRight;
 	public static WheelDrive backLeft;
 	//Declare SwerveDrive
-	public static SwerveDrive driveTrain;
+	public SwerveDrive driveTrain;
 	private Robot robot = new Robot();
 	
 	RobotMap() {
 		
 		//Finalize Spark declaration in constructor
 		//probably have to use navx for extra pwm ports too
+		
 		frontRightSpeedControl = new Spark(0);
 		frontRightRotControl = new Spark(1);
 		frontLeftSpeedControl = new Spark(2);
@@ -72,6 +74,7 @@ public class RobotMap {
 		backLeft = new WheelDrive(backLeftRotControl, backLeftSpeedControl, 3);
 		//Finalize declaration of SwerveDrive
 		driveTrain = new SwerveDrive(frontRight, frontLeft, backLeft, backRight);
+		
 		
 	}
 }
