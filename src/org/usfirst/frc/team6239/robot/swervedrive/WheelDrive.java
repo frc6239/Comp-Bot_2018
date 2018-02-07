@@ -1,27 +1,23 @@
 package org.usfirst.frc.team6239.robot.swervedrive;
 
-import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.Spark;
 
 public class WheelDrive {
 	
-	private Spark angleMotor;
-	private Spark speedMotor;
-	private PIDController pidController;
+	public Spark angleMotor;
+	public Spark speedMotor;
+	public PIDController pidController;
 	
 	private final double MAX_VOLTS = 4.95;
 	
-	public WheelDrive(Spark angleMotor, Spark speedMotor, PIDController pidController) {
+	public WheelDrive(Spark angleMotor, Spark speedMotor, int encoder) {
 		this.angleMotor = angleMotor;
 		this.speedMotor = speedMotor;
-		this.pidController = pidController;
+		pidController = new PIDController (1, 0, 0, new AbsoluteEncoder(encoder), this.angleMotor);
 		
-	}
-	
-	public void wheelInit() {
 		pidController.setOutputRange(-1, 1);
-	    pidController.setContinuous();
+	    //pidController.setContinuous();
 	    pidController.enable();
 	}
 	

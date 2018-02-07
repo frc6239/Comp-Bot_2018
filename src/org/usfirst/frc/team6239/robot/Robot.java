@@ -12,11 +12,6 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 
 public class Robot extends IterativeRobot {
 
-	public static PIDController frontRightRotation;
-    public static PIDController frontLeftRotation;
-    public static PIDController backRightRotation;
-    public static PIDController backLeftRotation;
-
 	//declare subsystems
     public static OI oi;
     public static RobotMap robotmap;
@@ -30,20 +25,13 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		robotmap = new RobotMap();
 
-		frontRightRotation = new PIDController(0.1, 0.1, 0, robotmap.frontRightRotEnc, robotmap.frontRightRotControl);
-		frontLeftRotation = new PIDController(0.1, 0.1, 0, robotmap.frontLeftRotEnc, robotmap.frontLeftRotControl);
-		backRightRotation = new PIDController(0.1, 0.1, 0, robotmap.backRightRotEnc, robotmap.backRightRotControl);
-		backLeftRotation = new PIDController(0.1, 0.1, 0, robotmap.backLeftRotEnc, robotmap.backLeftRotControl);
+
 		//Declare Subsystems in robotInit, like a constructor
 		oi = new OI();
 		DRIVE_SUB = new DriveSubsystem();
 		liftsub = new liftsubsystem();
 		//Declare PIDControllers in robotInit, /\
-		robotmap.frontRight.wheelInit();
-		robotmap.frontLeft.wheelInit();
-		robotmap.backRight.wheelInit();
-		robotmap.backLeft.wheelInit();
-		robotmap.driveTrain.setWheelbaseTrackwidth(wheelbase, trackwidth);
+		RobotMap.driveTrain.setWheelbaseTrackwidth(wheelbase, trackwidth);
 	}
 
 	

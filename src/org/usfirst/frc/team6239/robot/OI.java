@@ -1,7 +1,5 @@
 package org.usfirst.frc.team6239.robot;
 
-import org.usfirst.frc.team6239.robot.commands.liftcommand;
-
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;

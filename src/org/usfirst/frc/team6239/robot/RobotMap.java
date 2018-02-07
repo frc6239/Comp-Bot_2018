@@ -41,12 +41,13 @@ public class RobotMap {
 	public AbsoluteEncoder backRightRotEnc;
 	public AbsoluteEncoder backLeftRotEnc;
 	//Declare SwerveWheels
-	public WheelDrive frontRight;
-	public WheelDrive frontLeft;
-	public WheelDrive backRight;
-	public WheelDrive backLeft;
+	public static WheelDrive frontRight;
+	public static WheelDrive frontLeft;
+	public static WheelDrive backRight;
+	public static WheelDrive backLeft;
 	//Declare SwerveDrive
-	public SwerveDrive driveTrain;
+	public static SwerveDrive driveTrain;
+	private Robot robot = new Robot();
 	
 	RobotMap() {
 		
@@ -64,15 +65,11 @@ public class RobotMap {
 		lifter = new Spark(9);
 		//If we use the navx we will be able to have enough DIO Ports to support all the encoders
 		//Finalize Encoder Declaration in constructor
-		frontRightRotEnc = new AbsoluteEncoder(0);
-		frontLeftRotEnc = new AbsoluteEncoder(1);
-		backRightRotEnc = new AbsoluteEncoder(2);
-		backLeftRotEnc = new AbsoluteEncoder(3);
 		//Finalize declaration of WheelDrives
-		frontRight = new WheelDrive(frontRightRotControl, frontRightSpeedControl, Robot.frontRightRotation);
-		frontLeft = new WheelDrive(frontLeftRotControl, frontLeftSpeedControl, Robot.frontLeftRotation);
-		backRight = new WheelDrive(backRightRotControl, backRightSpeedControl, Robot.backRightRotation);
-		backLeft = new WheelDrive(backLeftRotControl, backLeftSpeedControl, Robot.backLeftRotation);
+		frontRight = new WheelDrive(frontRightRotControl, frontRightSpeedControl, 0);
+		frontLeft = new WheelDrive(frontLeftRotControl, frontLeftSpeedControl, 1);
+		backRight = new WheelDrive(backRightRotControl, backRightSpeedControl, 2);
+		backLeft = new WheelDrive(backLeftRotControl, backLeftSpeedControl, 3);
 		//Finalize declaration of SwerveDrive
 		driveTrain = new SwerveDrive(frontRight, frontLeft, backLeft, backRight);
 		

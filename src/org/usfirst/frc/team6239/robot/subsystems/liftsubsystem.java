@@ -5,9 +5,7 @@ import org.usfirst.frc.team6239.robot.Robot;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class liftsubsystem extends Subsystem{
-	
-	private boolean liftup = true;
-	
+		
 	
 	protected void initDefaultCommand() {
 		
