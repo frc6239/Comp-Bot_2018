@@ -2,6 +2,7 @@
 package org.usfirst.frc.team6239.robot;
 
 import org.usfirst.frc.team6239.robot.subsystems.DriveSubsystem;
+import org.usfirst.frc.team6239.robot.subsystems.grabba;
 import org.usfirst.frc.team6239.robot.subsystems.liftsubsystem;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -17,7 +18,9 @@ public class Robot extends IterativeRobot {
     public static RobotMap robotmap;
     public static DriveSubsystem DRIVE_SUB;
     public static liftsubsystem liftsub;
+    public static grabba grabber;
     //declare PIDControllers
+    public static PIDController armscontroller;
     //variables for drive, google it if you want to know what they mean
     public static double wheelbase = 0;
     public static double trackwidth = 0;
@@ -30,7 +33,9 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
 		DRIVE_SUB = new DriveSubsystem();
 		liftsub = new liftsubsystem();
+		grabber = new grabba();
 		//Declare PIDControllers in robotInit, /\
+		armscontroller = new PIDController(1, 0, 0, robotmap.armEncoder, robotmap.movearms);
 		//RobotMap.driveTrain.setWheelbaseTrackwidth(wheelbase, trackwidth);
 	}
 

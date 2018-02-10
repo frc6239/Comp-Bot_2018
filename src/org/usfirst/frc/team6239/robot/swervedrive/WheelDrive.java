@@ -33,7 +33,7 @@ public class WheelDrive {
 	        setpoint = setpoint - MAX_VOLTS;
 	    }
 
-	    pidController.setSetpoint (setpoint);
+	    pidController.setSetpoint(setpoint);
 	}
 
 

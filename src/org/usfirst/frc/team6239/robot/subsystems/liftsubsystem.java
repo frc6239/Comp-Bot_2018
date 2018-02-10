@@ -14,18 +14,14 @@ public class liftsubsystem extends Subsystem{
 	public void liftup() {
 		
 		Robot.robotmap.lifter.set(1);
+		Robot.robotmap.lifter2.set(0.75);
 		
 	}
 	
 	public void liftdown() {
 		
 		Robot.robotmap.lifter.set(-1);
-		
-	}
-	
-	public void shoot() {
-		
-		Robot.robotmap.grabber.set(-1);
+		Robot.robotmap.lifter2.set(-0.75);
 		
 	}
 
@@ -33,6 +29,7 @@ public class liftsubsystem extends Subsystem{
 		
 		Robot.robotmap.grabber.set(0);
 		Robot.robotmap.lifter.set(0);
+		Robot.robotmap.lifter2.set(0);
 		
 	}
 
