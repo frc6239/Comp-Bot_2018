@@ -11,11 +11,11 @@ public class grabba extends Subsystem {
     }
 
     public void in() {
-    	Robot.robotmap.grabber.set(1);
+    	Robot.robotmap.grabber.set(0.5);
     }
 
     public void out() {
-    	Robot.robotmap.grabber.set(-1);
+    	Robot.robotmap.grabber.set(-0.5);
     }
 
     public void stop() {

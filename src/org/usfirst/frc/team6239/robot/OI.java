@@ -1,6 +1,7 @@
 package org.usfirst.frc.team6239.robot;
 
-import org.usfirst.frc.team6239.robot.commands.grabbacmand;
+import org.usfirst.frc.team6239.robot.commands.grabbain;
+import org.usfirst.frc.team6239.robot.commands.grabbaout;
 import org.usfirst.frc.team6239.robot.commands.liftcommand;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -55,11 +56,12 @@ public class OI {
 		stickcontrollerL = new Joystick(0);
 		stickcontrollerR = new Joystick(1);
 		liftup = new JoystickButton(gamepad, 2);
-		liftup.whileHeld(new liftcommand(true));
+		//liftup.whileHeld(new liftcommand(true));
 		liftdown = new JoystickButton(gamepad, 3);
-		liftdown.whileHeld(new liftcommand(false));
+		//liftdown.whileHeld(new liftcommand(false));
 		grabin = new JoystickButton(gamepad, 4);
 		grabout = new JoystickButton(gamepad, 5);
-		grabin.whileHeld(new grabbacmand(true));
+		grabin.whileHeld(new grabbain());
+		grabout.whileHeld(new grabbaout());
 	}
 }

@@ -4,24 +4,14 @@ import org.usfirst.frc.team6239.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class grabbacmand extends Command {
-
-	boolean in;
+public class grabbaout extends Command {
 	
-	public grabbacmand(boolean in) {
-		this.in = in;
-	}
-	
-	protected void initialize() {
-		Robot.grabber.open();
+	public grabbaout() {
+		requires(Robot.grabber);
 	}
 
 	protected void execute() {
-		if (in) {
-			Robot.grabber.in();
-		} else {
-			Robot.grabber.out();
-		}
+		Robot.grabber.out();
 	}
 	
 	protected void end() {
