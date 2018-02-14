@@ -5,6 +5,7 @@ import org.usfirst.frc.team6239.robot.swervedrive.SwerveDrive;
 import org.usfirst.frc.team6239.robot.swervedrive.WheelDrive;
 
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.Spark;
 
 /**
@@ -38,7 +39,8 @@ public class RobotMap {
 	public Spark movearms;
 	public Spark lifter;
 	public Spark lifter2;
-
+    //public static PIDController frontRightController;
+    
 	//Declaring all encoders
 	public AbsoluteEncoder frontRightRotEnc;
 	public AbsoluteEncoder frontLeftRotEnc;
@@ -52,7 +54,6 @@ public class RobotMap {
 	public static WheelDrive backLeft;
 	//Declare SwerveDrive
 	public SwerveDrive driveTrain;
-	private Robot robot = new Robot();
 	
 	RobotMap() {
 		
@@ -67,18 +68,20 @@ public class RobotMap {
 		backRightRotControl = new Spark(5);
 		backLeftSpeedControl = new Spark(6);
 		backLeftRotControl = new Spark(7);
+		//frontRightController = new PIDController(1, 0, 0, frontRightRotEnc, frontRightRotControl);
 		grabber = new Spark(8);
 		movearms = new Spark(11);
 		lifter2 = new Spark(10);
 		lifter = new Spark(9);
+		System.out.println("Wheeldrive working");
 		//If we use the navx we will be able to have enough DIO Ports to support all the encoders
 		//Finalize Encoder Declaration in constructor
 		armEncoder = new Encoder(0, 1);
 		//Finalize declaration of WheelDrives
-		frontRight = new WheelDrive(frontRightRotControl, frontRightSpeedControl, 0);
+		//frontRight = new WheelDrive(frontRightRotControl, frontRightSpeedControl, 0);
 		frontLeft = new WheelDrive(frontLeftRotControl, frontLeftSpeedControl, 1);
-		backRight = new WheelDrive(backRightRotControl, backRightSpeedControl, 2);
-		backLeft = new WheelDrive(backLeftRotControl, backLeftSpeedControl, 3);
+		//backRight = new WheelDrive(backRightRotControl, backRightSpeedControl, 2);
+		//backLeft = new WheelDrive(backLeftRotControl, backLeftSpeedControl, 3);
 		//Finalize declaration of SwerveDrive
 		driveTrain = new SwerveDrive(frontRight, frontLeft, backLeft, backRight);
 		
