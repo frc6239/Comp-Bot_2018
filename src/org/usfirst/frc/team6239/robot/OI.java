@@ -51,17 +51,18 @@ public class OI {
 	public Button grabout;
 	public Button armopen;
 	public Button armclose;
-	
+
 	OI() {
-		stickcontrollerL = new Joystick(0);
-		stickcontrollerR = new Joystick(1);
+		stickcontrollerL = new Joystick(1);
+		stickcontrollerR = new Joystick(2);
+		gamepad = new Joystick(0);
 		liftup = new JoystickButton(gamepad, 2);
-		//liftup.whileHeld(new liftcommand(true));
+		liftup.whileHeld(new liftcommand(true));
 		liftdown = new JoystickButton(gamepad, 3);
-		//liftdown.whileHeld(new liftcommand(false));
+		liftdown.whileHeld(new liftcommand(false));
 		grabin = new JoystickButton(gamepad, 4);
 		grabout = new JoystickButton(gamepad, 5);
-		grabin.whileHeld(new grabbain());
 		grabout.whileHeld(new grabbaout());
+		grabin.whileHeld(new grabbain());
 	}
 }

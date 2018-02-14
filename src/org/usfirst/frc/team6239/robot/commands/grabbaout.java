@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class grabbaout extends Command {
 	
 	public grabbaout() {
-		requires(Robot.grabber);
+		//requires(Robot.grabber);
 	}
 
 	protected void execute() {

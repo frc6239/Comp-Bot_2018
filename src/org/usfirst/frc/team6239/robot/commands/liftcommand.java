@@ -9,9 +9,10 @@ public class liftcommand extends Command {
 	//TODO PG27 Gearbox
 	private boolean liftup = true;
 	public liftcommand(boolean liftup) {
+		requires(Robot.liftsub);
 		this.liftup = liftup;
 	}
-	
+
 	protected void initialize() {
 			if(liftup = true) {
 		Robot.liftsub.liftup();
@@ -29,7 +30,7 @@ public class liftcommand extends Command {
 			}
 	}
 
-	
+
 	protected void end() {
 		Robot.liftsub.stop();
 	}

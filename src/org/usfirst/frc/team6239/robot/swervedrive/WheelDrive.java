@@ -20,6 +20,8 @@ public class WheelDrive {
 		pidController.setInputRange(0, 360);
 	    pidController.setContinuous();
 	    pidController.enable();
+	    //pidController.setSetpoint(0);
+	    System.out.println("Wheeldrive working");
 	}
 	
 	public void drive (double speed, double angle) {
@@ -34,6 +36,7 @@ public class WheelDrive {
 	    }
 
 	    pidController.setSetpoint(setpoint);
+	    System.out.println("Wheeldrive working");
 	}
 
 
