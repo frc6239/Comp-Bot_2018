@@ -14,7 +14,7 @@ public class WheelDrive {
 	public WheelDrive(Spark angleMotor, Spark speedMotor, int encoder) {
 		this.angleMotor = angleMotor;
 		this.speedMotor = speedMotor;
-		pidController = new PIDController (1, 0, 10, new AbsoluteEncoder(encoder), this.angleMotor);
+		pidController = new PIDController (.0001, 0, 0, new AbsoluteEncoder(encoder), this.angleMotor);
 		//this.pidController = pidController;
 		pidController.setOutputRange(-1, 1);
 		pidController.setInputRange(0, 360);

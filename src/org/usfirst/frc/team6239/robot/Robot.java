@@ -7,7 +7,9 @@ import org.usfirst.frc.team6239.robot.subsystems.liftsubsystem;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.PIDController;
+import edu.wpi.first.wpilibj.Sendable;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
 
@@ -24,7 +26,6 @@ public class Robot extends IterativeRobot {
     //variables for drive, google it if you want to know what they mean
     public static double wheelbase = 0;
     public static double trackwidth = 0;
-	
 	public void robotInit() {
 		robotmap = new RobotMap();
 		armscontroller = new PIDController(1, 0, 0, robotmap.armEncoder, robotmap.movearms);
@@ -36,6 +37,24 @@ public class Robot extends IterativeRobot {
 		//Declare Subsystems in robotInit, like a constructor
 		//Declare PIDControllers in robotInit, /\
 		//RobotMap.driveTrain.setWheelbaseTrackwidth(wheelbase, trackwidth);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	}
 
 	
