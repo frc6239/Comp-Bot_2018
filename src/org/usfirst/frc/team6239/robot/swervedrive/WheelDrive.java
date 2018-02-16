@@ -28,12 +28,13 @@ public class WheelDrive {
 	    speedMotor.set(speed);
 
 	    double setpoint = angle * (MAX_VOLTS * 0.5) + (MAX_VOLTS * 0.5); // Optimization offset can be calculated here.
-//	    if (setpoint < 0) {
-//	        setpoint = MAX_VOLTS + setpoint;
-//	    }
-//	    if (setpoint > MAX_VOLTS) {
-//	        setpoint = setpoint - MAX_VOLTS;
-//	    }
+	    if (setpoint < 0) {
+	        setpoint = MAX_VOLTS + setpoint;
+	    }
+	    if (setpoint > MAX_VOLTS) {
+	        setpoint = setpoint - MAX_VOLTS;
+	    }
+	    setpoint = 
 
 	    pidController.setSetpoint(setpoint);
 	    //System.out.println("Wheeldrive working");
