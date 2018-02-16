@@ -21,6 +21,7 @@ public class DriveCommand extends Command {
 	protected void execute() {
 		//Execute the drive command in subsystem
 		Robot.DRIVE_SUB.drive();
+		//System.out.println("Working");
 	}
 
 	@Override

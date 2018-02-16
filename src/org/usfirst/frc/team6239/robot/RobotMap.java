@@ -48,6 +48,12 @@ public class RobotMap {
 	public AbsoluteEncoder backLeftRotEnc;
 	public Encoder armEncoder;
 	//Declare SwerveWheels
+	
+	public PIDController frontRightController;
+	public PIDController frontLeftController;
+	public PIDController backRightController;
+	public PIDController backLeftController;
+	
 	public static WheelDrive frontRight;
 	public static WheelDrive frontLeft;
 	public static WheelDrive backRight;
@@ -73,15 +79,26 @@ public class RobotMap {
 		movearms = new Spark(11);
 		lifter2 = new Spark(10);
 		lifter = new Spark(9);
-		System.out.println("Wheeldrive working");
+		//System.out.println("Wheeldrive working");
 		//If we use the navx we will be able to have enough DIO Ports to support all the encoders
+		
+		frontRightRotEnc = new AbsoluteEncoder(0);
+		frontLeftRotEnc = new AbsoluteEncoder(1);
+		backRightRotEnc = new AbsoluteEncoder(2);
+		backLeftRotEnc = new AbsoluteEncoder(3);
+		
+		frontRightController = new PIDController(.007, .004, 0, frontRightRotEnc, frontRightRotControl);
+		frontLeftController = new PIDController(.007, .004, 0, frontLeftRotEnc, frontLeftRotControl);
+		backRightController = new PIDController(.007, .004, 0, backRightRotEnc, backRightRotControl);
+		backLeftController = new PIDController(.007, .004, 0, backLeftRotEnc, backLeftRotControl);
+		
 		//Finalize Encoder Declaration in constructor
 		armEncoder = new Encoder(0, 1);
 		//Finalize declaration of WheelDrives
-		//frontRight = new WheelDrive(frontRightRotControl, frontRightSpeedControl, 0);
-		frontLeft = new WheelDrive(frontLeftRotControl, frontLeftSpeedControl, 1);
-		//backRight = new WheelDrive(backRightRotControl, backRightSpeedControl, 2);
-		//backLeft = new WheelDrive(backLeftRotControl, backLeftSpeedControl, 3);
+		frontRight = new WheelDrive(frontRightRotControl, frontRightSpeedControl, frontRightController);
+		frontLeft = new WheelDrive(frontLeftRotControl, frontLeftSpeedControl, frontLeftController);
+		backRight = new WheelDrive(backRightRotControl, backRightSpeedControl, backRightController);
+		backLeft = new WheelDrive(backLeftRotControl, backLeftSpeedControl, backLeftController);
 		//Finalize declaration of SwerveDrive
 		driveTrain = new SwerveDrive(frontRight, frontLeft, backLeft, backRight);
 		
