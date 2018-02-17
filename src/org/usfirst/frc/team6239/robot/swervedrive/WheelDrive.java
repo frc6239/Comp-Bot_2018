@@ -26,9 +26,12 @@ public class WheelDrive {
 	
 	public void update (double speed, double angle) {
 	    speedMotor.set(speed);
-	    if (angle < 0) {
-	    	angle += 360;
-	    }
+//	    if (angle < 0) {
+//	    	angle += 360;
+//	    }
+//	    if (angle > 360) {
+//	    	angle -= 360;
+//	    }
 
 //	    double setpoint = angle * (MAX_VOLTS * 0.5) + (MAX_VOLTS * 0.5); // Optimization offset can be calculated here.
 //	    while (setpoint < 0) {
@@ -40,6 +43,7 @@ public class WheelDrive {
 
 	    pidController.setSetpoint(angle);
 	    System.out.println(angle);
+	    
 	}
 
 

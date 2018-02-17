@@ -70,11 +70,11 @@ public class RobotMap {
 		frontRightRotControl = new Spark(1);
 		frontLeftSpeedControl = new Spark(2);
 		frontLeftRotControl = new Spark(3);
-		backRightSpeedControl = new Spark(4);
-		backRightRotControl = new Spark(5);
-		backLeftSpeedControl = new Spark(6);
-		backLeftRotControl = new Spark(7);
-		//frontRightController = new PIDController(1, 0, 0, frontRightRotEnc, frontRightRotControl);
+		backRightSpeedControl = new Spark(6);
+		backRightRotControl = new Spark(7);
+		backLeftSpeedControl = new Spark(4);
+		backLeftRotControl = new Spark(5);
+		
 		grabber = new Spark(8);
 		movearms = new Spark(11);
 		lifter2 = new Spark(10);
@@ -84,8 +84,8 @@ public class RobotMap {
 		
 		frontRightRotEnc = new AbsoluteEncoder(0);
 		frontLeftRotEnc = new AbsoluteEncoder(1);
-		backRightRotEnc = new AbsoluteEncoder(2);
-		backLeftRotEnc = new AbsoluteEncoder(3);
+		backRightRotEnc = new AbsoluteEncoder(3);
+		backLeftRotEnc = new AbsoluteEncoder(2);
 		
 		frontRightController = new PIDController(.006, .004, 0, frontRightRotEnc, frontRightRotControl);
 		frontLeftController = new PIDController(.006, .004, 0, frontLeftRotEnc, frontLeftRotControl);
@@ -93,7 +93,7 @@ public class RobotMap {
 		backLeftController = new PIDController(.006, .004, 0, backLeftRotEnc, backLeftRotControl);
 		
 		//Finalize Encoder Declaration in constructor
-		armEncoder = new Encoder(0, 1);
+		//armEncoder = new Encoder(0, 1);
 		//Finalize declaration of WheelDrives
 		frontRight = new WheelDrive(frontRightRotControl, frontRightSpeedControl, frontRightController);
 		frontLeft = new WheelDrive(frontLeftRotControl, frontLeftSpeedControl, frontLeftController);
