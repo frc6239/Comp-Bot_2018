@@ -87,10 +87,10 @@ public class RobotMap {
 		backRightRotEnc = new AbsoluteEncoder(2);
 		backLeftRotEnc = new AbsoluteEncoder(3);
 		
-		frontRightController = new PIDController(.007, .004, 0, frontRightRotEnc, frontRightRotControl);
-		frontLeftController = new PIDController(.007, .004, 0, frontLeftRotEnc, frontLeftRotControl);
-		backRightController = new PIDController(.007, .004, 0, backRightRotEnc, backRightRotControl);
-		backLeftController = new PIDController(.007, .004, 0, backLeftRotEnc, backLeftRotControl);
+		frontRightController = new PIDController(.006, .004, 0, frontRightRotEnc, frontRightRotControl);
+		frontLeftController = new PIDController(.006, .004, 0, frontLeftRotEnc, frontLeftRotControl);
+		backRightController = new PIDController(.006, .004, 0, backRightRotEnc, backRightRotControl);
+		backLeftController = new PIDController(.006, .004, 0, backLeftRotEnc, backLeftRotControl);
 		
 		//Finalize Encoder Declaration in constructor
 		armEncoder = new Encoder(0, 1);

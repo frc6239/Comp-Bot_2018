@@ -9,7 +9,7 @@ public class WheelDrive {
 	public Spark speedMotor;
 	public PIDController pidController;
 	
-	private final double MAX_VOLTS = 4.95;
+	private final double MAX_VOLTS = 5;
 	
 	public WheelDrive(Spark angleMotor, Spark speedMotor, PIDController pidController) {
 		this.angleMotor = angleMotor;
@@ -26,6 +26,10 @@ public class WheelDrive {
 	
 	public void update (double speed, double angle) {
 	    speedMotor.set(speed);
+	    
+	    if (angle < 0) {
+	    	angle += 360;
+	    }
 
 	    double setpoint = angle * (MAX_VOLTS * 0.5) + (MAX_VOLTS * 0.5); // Optimization offset can be calculated here.
 	    if (setpoint < 0) {
@@ -34,10 +38,9 @@ public class WheelDrive {
 	    if (setpoint > MAX_VOLTS) {
 	        setpoint = setpoint - MAX_VOLTS;
 	    }
-	    setpoint = 
 
 	    pidController.setSetpoint(setpoint);
-	    //System.out.println("Wheeldrive working");
+	    //System.out.println(angle);
 	}
 
 
