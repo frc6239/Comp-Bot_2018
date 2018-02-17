@@ -17,7 +17,7 @@ public class WheelDrive {
 		//pidController = new PIDController (.01, .001, 0, new AbsoluteEncoder(encoder), this.angleMotor);
 		this.pidController = pidController;
 		this.pidController.setOutputRange(-1, 1);
-		this.pidController.setInputRange(0f, 360f);
+		this.pidController.setInputRange(-180f, 180f);
 	    this.pidController.setContinuous();
 	    this.pidController.enable();
 	    pidController.setSetpoint(0);
@@ -26,21 +26,21 @@ public class WheelDrive {
 	
 	public void update (double speed, double angle) {
 	    speedMotor.set(speed);
-	    
-	    if (angle < 0) {
-	    	angle += 360;
-	    }
+	    //angle = -90;
+//	    if (angle < 0) {
+//	    	angle += 360;
+//	    }
 
-	    double setpoint = angle * (MAX_VOLTS * 0.5) + (MAX_VOLTS * 0.5); // Optimization offset can be calculated here.
-	    if (setpoint < 0) {
-	        setpoint = MAX_VOLTS + setpoint;
-	    }
-	    if (setpoint > MAX_VOLTS) {
-	        setpoint = setpoint - MAX_VOLTS;
-	    }
+//	    double setpoint = angle * (MAX_VOLTS * 0.5) + (MAX_VOLTS * 0.5); // Optimization offset can be calculated here.
+//	    if (setpoint < 0) {
+//	        setpoint = MAX_VOLTS + setpoint;
+//	    }
+//	    if (setpoint > MAX_VOLTS) {
+//	        setpoint = setpoint - MAX_VOLTS;
+//	    }
 
-	    pidController.setSetpoint(setpoint);
-	    //System.out.println(angle);
+	    pidController.setSetpoint(angle);
+	    System.out.println(angle);
 	}
 
 
