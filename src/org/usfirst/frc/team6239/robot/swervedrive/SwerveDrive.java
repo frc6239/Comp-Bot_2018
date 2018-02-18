@@ -19,9 +19,9 @@ public class SwerveDrive {
 	
 	public void drive (double x1, double y1, double x2) {
 	    double r = Math.sqrt ((L * L) + (W * W));
-	    //x1 *= -1;
-	    //y1 *= -1;
-	    //x2 *= -1;
+	    x1 *= -1;
+	    y1 *= -1;
+	    x2 *= -1;
 	    
 	    double a = x1 - x2 * (L / r);
 	    double b = x1 + x2 * (L / r);
