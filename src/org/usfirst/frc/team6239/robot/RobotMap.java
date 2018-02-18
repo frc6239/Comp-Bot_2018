@@ -66,14 +66,18 @@ public class RobotMap {
 		//Finalize Spark declaration in constructor
 		//probably have to use navx for extra pwm ports too
 		
-		frontRightSpeedControl = new Spark(0);
-		frontRightRotControl = new Spark(1);
-		frontLeftSpeedControl = new Spark(2);
-		frontLeftRotControl = new Spark(3);
-		backRightSpeedControl = new Spark(6);
-		backRightRotControl = new Spark(7);
+		frontRightSpeedControl = new Spark(2);
+		frontRightRotControl = new Spark(3);
+		frontLeftSpeedControl = new Spark(6);
+		frontLeftRotControl = new Spark(7);
+		backRightSpeedControl = new Spark(0);
+		backRightRotControl = new Spark(1);
 		backLeftSpeedControl = new Spark(4);
 		backLeftRotControl = new Spark(5);
+		
+		
+		
+	
 		
 		grabber = new Spark(8);
 		movearms = new Spark(11);
@@ -82,9 +86,9 @@ public class RobotMap {
 		//System.out.println("Wheeldrive working");
 		//If we use the navx we will be able to have enough DIO Ports to support all the encoders
 		
-		frontRightRotEnc = new AbsoluteEncoder(0);
-		frontLeftRotEnc = new AbsoluteEncoder(1);
-		backRightRotEnc = new AbsoluteEncoder(3);
+		frontRightRotEnc = new AbsoluteEncoder(1);
+		frontLeftRotEnc = new AbsoluteEncoder(3);
+		backRightRotEnc = new AbsoluteEncoder(0);
 		backLeftRotEnc = new AbsoluteEncoder(2);
 		
 		frontRightController = new PIDController(.006, .004, 0, frontRightRotEnc, frontRightRotControl);
@@ -105,3 +109,4 @@ public class RobotMap {
 		
 	}
 }
+  
