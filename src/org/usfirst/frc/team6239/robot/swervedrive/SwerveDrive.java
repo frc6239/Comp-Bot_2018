@@ -34,7 +34,7 @@ public class SwerveDrive {
 	    double frontLeftSpeed = Math.sqrt ((b * b) + (c * c));
 	    
 	    
-	
+	    
 	    
 	    backRightSpeed *= .7;
 	    backLeftSpeed *= .7;
