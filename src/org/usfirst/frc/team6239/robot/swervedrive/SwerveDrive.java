@@ -36,10 +36,10 @@ public class SwerveDrive {
 	    
 	
 	    
-	    backRightSpeed *= .4;
-	    backLeftSpeed *= .4;
-	    frontRightSpeed *= .4;
-	    frontLeftSpeed *= .4;
+	    backRightSpeed *= .7;
+	    backLeftSpeed *= .7;
+	    frontRightSpeed *= .7;
+	    frontLeftSpeed *= .7;
 
 	    double backRightAngle = Math.atan2 (d, a) * (180/ Math.PI);
 	    double backLeftAngle = Math.atan2 (c, a) * (180/ Math.PI);
