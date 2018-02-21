@@ -4,6 +4,7 @@ import org.usfirst.frc.team6239.robot.swervedrive.AbsoluteEncoder;
 import org.usfirst.frc.team6239.robot.swervedrive.SwerveDrive;
 import org.usfirst.frc.team6239.robot.swervedrive.WheelDrive;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.Spark;
@@ -35,7 +36,8 @@ public class RobotMap {
 	public Spark backRightSpeedControl;
 	public Spark backLeftRotControl;
 	public Spark backLeftSpeedControl;
-	public Spark grabber;
+	public Spark grabberRight;
+	public Spark grabberLeft;
 	public Spark movearms;
 	public Spark lifter;
 	public Spark lifter2;
@@ -46,7 +48,6 @@ public class RobotMap {
 	public AbsoluteEncoder frontLeftRotEnc;
 	public AbsoluteEncoder backRightRotEnc;
 	public AbsoluteEncoder backLeftRotEnc;
-	public Encoder armEncoder;
 	//Declare SwerveWheels
 	
 	public PIDController frontRightController;
@@ -60,6 +61,8 @@ public class RobotMap {
 	public static WheelDrive backLeft;
 	//Declare SwerveDrive
 	public SwerveDrive driveTrain;
+	
+	public DigitalInput grabberArmLimit;
 	
 	RobotMap() {
 		
@@ -75,14 +78,11 @@ public class RobotMap {
 		backLeftSpeedControl = new Spark(4);
 		backLeftRotControl = new Spark(5);
 		
-		
-		
-	
-		
-		grabber = new Spark(8);
-		movearms = new Spark(11);
-		lifter2 = new Spark(10);
-		lifter = new Spark(9);
+		grabberRight = new Spark(8);
+		grabberLeft = new Spark(9);
+		movearms = new Spark(12);
+		lifter2 = new Spark(11);
+		lifter = new Spark(10);
 		//System.out.println("Wheeldrive working");
 		//If we use the navx we will be able to have enough DIO Ports to support all the encoders
 		
@@ -105,6 +105,8 @@ public class RobotMap {
 		backLeft = new WheelDrive(backLeftRotControl, backLeftSpeedControl, backLeftController);
 		//Finalize declaration of SwerveDrive
 		driveTrain = new SwerveDrive(frontRight, frontLeft, backLeft, backRight);
+		
+		grabberArmLimit = new DigitalInput(0);
 		
 		
 	}

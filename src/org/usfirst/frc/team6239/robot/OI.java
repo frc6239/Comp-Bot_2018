@@ -49,8 +49,6 @@ public class OI {
 	public Button liftdown;
 	public Button grabin;
 	public Button grabout;
-	public Button armopen;
-	public Button armclose;
 
 	OI() {
 		stickcontrollerL = new Joystick(1);
@@ -64,7 +62,5 @@ public class OI {
 		grabout = new JoystickButton(gamepad, 7);
 		grabout.whileHeld(new grabbaout());
 		grabin.whileHeld(new grabbain());
-		armopen = new JoystickButton(gamepad, 12);
-		armclose = new JoystickButton(gamepad, 11);
 	}
 }

@@ -27,7 +27,6 @@ public class liftsubsystem extends Subsystem{
 
 	public void stop() {
 		
-		Robot.robotmap.grabber.set(0);
 		Robot.robotmap.lifter.set(0);
 		Robot.robotmap.lifter2.set(0);
 		
