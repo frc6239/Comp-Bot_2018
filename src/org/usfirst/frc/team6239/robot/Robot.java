@@ -2,6 +2,7 @@
 package org.usfirst.frc.team6239.robot;
 
 import com.kauailabs.navx.frc.AHRS;
+import edu.wpi.first.wpilibj.Timer;
 import org.usfirst.frc.team6239.robot.subsystems.DriveSubsystem;
 import org.usfirst.frc.team6239.robot.subsystems.grabba;
 import org.usfirst.frc.team6239.robot.subsystems.liftsubsystem;
@@ -73,8 +74,12 @@ public class Robot extends IterativeRobot {
 
 	
 	public void autonomousInit() {
-		
-		
+
+		Robot.robotmap.driveTrain.drive(0, .4, 0,
+				1 , 0);
+		Timer.delay(4);
+		Robot.robotmap.driveTrain.drive(0, 0, 0,
+				1 , 0);
 		
 	}
 
@@ -110,7 +115,6 @@ public class Robot extends IterativeRobot {
 
 	public void autonomousPeriodic() {
 		//Scheduler.getInstance().run();
-		
 		
 	}
 
