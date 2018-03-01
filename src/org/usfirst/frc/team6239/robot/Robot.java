@@ -1,6 +1,7 @@
 
 package org.usfirst.frc.team6239.robot;
 
+import com.kauailabs.navx.frc.AHRS;
 import org.usfirst.frc.team6239.robot.subsystems.DriveSubsystem;
 import org.usfirst.frc.team6239.robot.subsystems.grabba;
 import org.usfirst.frc.team6239.robot.subsystems.liftsubsystem;
@@ -10,7 +11,7 @@ import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 
-
+import static edu.wpi.first.wpilibj.SerialPort.Port.kMXP;
 
 public class Robot extends IterativeRobot {
 
@@ -27,14 +28,18 @@ public class Robot extends IterativeRobot {
     public static OI oi;
     public static DriveSubsystem DRIVE_SUB;
     public static liftsubsystem liftsub;
+    public static AHRS navX;
     //public static NetworkTable table;  
     public static double P;
     //declare PIDControllers
     //variables for drive, google it if you want to know what they mean
     public static double wheelbase = 0;
     public static double trackwidth = 0;
-	
+
 	public void robotInit() {
+
+		navX = new AHRS(kMXP);
+
 		robotmap = new RobotMap();
 		//armscontroller = new PIDController(1, 0, 0, robotmap.armEncoder, robotmap.movearms);
 		DRIVE_SUB = new DriveSubsystem();

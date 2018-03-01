@@ -5,7 +5,7 @@ package org.usfirst.frc.team6239.robot.swervedrive;
  */
 public class SwerveDrive {
 
-	public final double L = 14;
+	public final double L = 21;
 	public final double W = 22;
 	
 	WheelDrive frontRight, frontLeft, backLeft, backRight;
@@ -17,29 +17,45 @@ public class SwerveDrive {
 		this.backRight = backRight;
 	}
 	
-	public void drive (double x1, double y1, double x2) {
+	public void drive (double x, double y, double z, double speed, double angle) {
 	    double r = Math.sqrt ((L * L) + (W * W));
-	    x1 *= -1;
-	    y1 *= -1;
-	    x2 *= -1;
+
+		x = -(-y) * Math.cos(angle) + x * Math.sin(angle);
+		y = -y * Math.cos(angle) + x * Math.cos(angle);
+		y=-y;
+
 	    
-	    double a = x1 - x2 * (L / r);
-	    double b = x1 + x2 * (L / r);
-	    double c = y1 - x2 * (W / r);
-	    double d = y1 + x2 * (W / r);
+	    double a = x - x * (L / r);
+	    double b = x + x * (L / r);
+	    double c = y - x * (W / r);
+	    double d = y + x * (W / r);
 
 	    double backRightSpeed = Math.sqrt ((a * a) + (d * d));
 	    double backLeftSpeed = Math.sqrt ((a * a) + (c * c));
 	    double frontRightSpeed = Math.sqrt ((b * b) + (d * d));
 	    double frontLeftSpeed = Math.sqrt ((b * b) + (c * c));
 	    
+	    double max = frontLeftSpeed;
+	    if (frontLeftSpeed > max) {
+	    	frontLeftSpeed = max;
+		} if (frontRightSpeed > max) {
+	    	frontRightSpeed = max;
+		} if (backLeftSpeed > max) {
+	    	backLeftSpeed = max;
+		} if (backRightSpeed > max) {
+	    	backRightSpeed = max;
+		}
+		if (max > 1) {
+	    	frontLeftSpeed = frontLeftSpeed/max;
+	    	frontRightSpeed = frontRightSpeed/max;
+	    	backLeftSpeed = backLeftSpeed/max;
+	    	backRightSpeed = backRightSpeed/max;
+		}
 	    
-	    
-	    
-	    backRightSpeed *= .7;
-	    backLeftSpeed *= .7;
-	    frontRightSpeed *= .7;
-	    frontLeftSpeed *= .7;
+	    backRightSpeed *= speed;
+	    backLeftSpeed *= speed;
+	    frontRightSpeed *= speed;
+	    frontLeftSpeed *= speed;
 
 	    double backRightAngle = Math.atan2 (d, a) * (180/ Math.PI);
 	    double backLeftAngle = Math.atan2 (c, a) * (180/ Math.PI);
@@ -51,7 +67,7 @@ public class SwerveDrive {
 //	    frontLeftAngle += 90;
 //	    frontRightAngle += 90;
 	    
-	    System.out.println("x1: " + x1 + " y1: " +  y1 + " x2: " + x2);
+	    System.out.println("x1: " + x + " y1: " +  y + " x2: " + z);
 	    System.out.println("a: " + a + " b: " + b + " c: " + c + " d: " + d);
 	    System.out.println("PI: " + Math.PI);
 	    System.out.println("atan2(a, d): " + Math.atan2(b, d));
