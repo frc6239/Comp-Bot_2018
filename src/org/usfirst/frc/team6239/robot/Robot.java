@@ -29,13 +29,13 @@ public class Robot extends IterativeRobot {
     public static liftsubsystem liftsub;
     public static AHRS navX;
     //public static NetworkTable table;  
-    public static double P;
     //declare PIDControllers
     //variables for drive, google it if you want to know what they mean
 
 	public void robotInit() {
 
 		navX = new AHRS(kMXP);
+		navX.reset();
 
 		robotmap = new RobotMap();
 		//armscontroller = new PIDController(1, 0, 0, robotmap.armEncoder, robotmap.movearms);

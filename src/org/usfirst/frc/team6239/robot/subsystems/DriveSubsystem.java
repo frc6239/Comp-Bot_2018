@@ -22,4 +22,9 @@ public class DriveSubsystem extends Subsystem {
 		Robot.robotmap.driveTrain.drive(Robot.oi.stickcontrollerL.getX(), Robot.oi.stickcontrollerL.getY(), Robot.oi.stickcontrollerR.getX(),
 				Robot.oi.stickcontrollerL.getZ() , Robot.navX.getAngle());
 	}
+
+	public void arms() {
+		Robot.robotmap.movearms.set(-Robot.oi.gamepad.getRawAxis(1));
+	}
+
 }

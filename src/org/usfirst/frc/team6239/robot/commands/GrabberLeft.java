@@ -3,24 +3,26 @@ package org.usfirst.frc.team6239.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team6239.robot.Robot;
 
-public class ArmDownCommand extends Command {
+public class GrabberLeft extends Command {
+
+    public GrabberLeft() {
+        requires(Robot.grabber);
+    }
 
     protected boolean isFinished() {
         return false;
     }
 
-    @Override
     protected void execute() {
-        Robot.grabber.armDown();
+        Robot.robotmap.grabberLeft.set(-.5);
     }
 
-    @Override
     protected void end() {
-        Robot.grabber.stopArms();
+        Robot.robotmap.grabberLeft.set(0);
     }
 
-    @Override
     protected void interrupted() {
-        Robot.grabber.stopArms();
+        Robot.robotmap.grabberLeft.set(0);
+        end();
     }
 }
