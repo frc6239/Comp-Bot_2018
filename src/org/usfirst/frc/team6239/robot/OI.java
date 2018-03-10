@@ -49,6 +49,8 @@ public class OI {
 	public Button liftdown;
 	public Button grabin;
 	public Button grabout;
+	public Button armUp;
+	public Button armDown;
 
 	OI() {
 		stickcontrollerL = new Joystick(1);

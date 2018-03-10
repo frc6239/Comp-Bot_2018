@@ -39,8 +39,8 @@ public class RobotMap {
 	public Spark grabberRight;
 	public Spark grabberLeft;
 	public Spark movearms;
-	public Spark lifter;
-	public Spark lifter2;
+	public Spark lifterBottom;
+	public Spark lifterTop;
     //public static PIDController frontRightController;
     
 	//Declaring all encoders
@@ -81,8 +81,8 @@ public class RobotMap {
 		grabberRight = new Spark(8);
 		grabberLeft = new Spark(9);
 		movearms = new Spark(12);
-		lifter2 = new Spark(11);
-		lifter = new Spark(10);
+		lifterTop = new Spark(11);
+		lifterBottom = new Spark(10);
 		//System.out.println("Wheeldrive working");
 		//If we use the navx we will be able to have enough DIO Ports to support all the encoders
 		

@@ -1,4 +1,3 @@
-
 package org.usfirst.frc.team6239.robot;
 
 import com.kauailabs.navx.frc.AHRS;
@@ -10,7 +9,6 @@ import org.usfirst.frc.team6239.robot.subsystems.liftsubsystem;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.networktables.NetworkTable;
 
 import static edu.wpi.first.wpilibj.SerialPort.Port.kMXP;
 
@@ -34,8 +32,6 @@ public class Robot extends IterativeRobot {
     public static double P;
     //declare PIDControllers
     //variables for drive, google it if you want to know what they mean
-    public static double wheelbase = 0;
-    public static double trackwidth = 0;
 
 	public void robotInit() {
 
@@ -55,56 +51,34 @@ public class Robot extends IterativeRobot {
 		
 		//table.putDouble("P_CONTROL", 0);
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 	}
-
 	
 	public void autonomousInit() {
 
-		Robot.robotmap.driveTrain.drive(0, .4, 0,
-				1 , 0);
 		Timer.delay(4);
-		Robot.robotmap.driveTrain.drive(0, 0, 0,
-				1 , 0);
+		Robot.robotmap.driveTrain.drive(0, .4, 0, 1, navX.getAngle());
+		Timer.delay(4);
+		Robot.robotmap.driveTrain.drive(0, 0, 0, 1, navX.getAngle());
 		
 	}
-
 	
 	public void teleopInit() {
 		
 		
 		
 	}
-
 	
 	public void robotPeriodic() {
 		Scheduler.getInstance().run();
 		
 		
 	}
-	
-	
-	
+
 	public void disabledInit() {
 		
 		
 		
 	}
-
 
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
@@ -125,12 +99,4 @@ public class Robot extends IterativeRobot {
 		
 		
 	}
-	
-
-
-	
-	
-	
-	//Robot
-	//speed = NetworkTable.getTable("Super awesome coolness Xtreme").getDouble("speed", 0);
 }

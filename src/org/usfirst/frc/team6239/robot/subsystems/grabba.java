@@ -25,4 +25,17 @@ public class grabba extends Subsystem {
     	Robot.robotmap.grabberRight.set(0);
     }
 
+
+
+
+    public void armUp() {
+        Robot.robotmap.movearms.set(.5);
+    }
+    public void armDown() {
+        Robot.robotmap.movearms.set(-.5);
+    }
+    public void stopArms() {
+        Robot.robotmap.movearms.set(0);
+    }
+
 }

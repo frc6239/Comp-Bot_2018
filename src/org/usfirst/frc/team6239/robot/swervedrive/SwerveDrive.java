@@ -25,10 +25,10 @@ public class SwerveDrive {
 		y=-y;
 
 	    
-	    double a = x - x * (L / r);
-	    double b = x + x * (L / r);
-	    double c = y - x * (W / r);
-	    double d = y + x * (W / r);
+	    double a = x - z * (L / r);
+	    double b = x + z * (L / r);
+	    double c = y - z * (W / r);
+	    double d = y + z * (W / r);
 
 	    double backRightSpeed = Math.sqrt ((a * a) + (d * d));
 	    double backLeftSpeed = Math.sqrt ((a * a) + (c * c));
