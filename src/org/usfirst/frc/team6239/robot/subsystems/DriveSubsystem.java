@@ -20,7 +20,7 @@ public class DriveSubsystem extends Subsystem {
 		//System.out.println("i;fajalds;kjf;lkasjdsadg[oiasdjg[ijaseofdisa[d9if");
 		//Robot.robotmap.driveTrain.drive(0, 0, 0);
 		Robot.robotmap.driveTrain.drive(Robot.oi.stickcontrollerL.getX(), Robot.oi.stickcontrollerL.getY(), Robot.oi.stickcontrollerR.getX(),
-				Robot.oi.stickcontrollerL.getZ() , Robot.navX.getAngle());
+				Robot.oi.stickcontrollerL.getRawAxis(3) , Robot.navX.getAngle());
 	}
 
 	public void arms() {

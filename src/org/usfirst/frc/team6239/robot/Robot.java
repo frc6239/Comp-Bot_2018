@@ -44,7 +44,7 @@ public class Robot extends IterativeRobot {
 		grabber = new grabba();
 		oi = new OI();
 		//table = NetworkTable.getTable("Smartdashboard");
-		System.out.println(DRIVE_SUB);
+		//System.out.println(DRIVE_SUB);
 		//Declare Subsystems in robotInit, like a constructor
 		//Declare PIDControllers in robotInit, /\
 		//RobotMap.driveTrain.setWheelbaseTrackwidth(wheelbase, trackwidth);

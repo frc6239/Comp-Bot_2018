@@ -29,7 +29,7 @@ public class RobotMap {
 	// public static int rangefinderModule = 1;
 	
 	//Declaring all sparks
-	
+
 	public Spark frontRightRotControl;
 	public Spark frontRightSpeedControl;
 	public Spark frontLeftRotControl;
@@ -164,4 +164,3 @@ public class RobotMap {
         return roborio_channel;
     }
 }
-  

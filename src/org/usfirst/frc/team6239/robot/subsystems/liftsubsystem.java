@@ -10,7 +10,7 @@ public class liftsubsystem extends Subsystem{
 	protected void initDefaultCommand() {
 		
 	}
-	
+	//TODO Test these values
 	public void liftup() {
 		
 		Robot.robotmap.lifterTop.set(1);
