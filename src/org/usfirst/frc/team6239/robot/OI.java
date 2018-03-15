@@ -1,5 +1,7 @@
 package org.usfirst.frc.team6239.robot;
 
+import org.usfirst.frc.team6239.robot.commands.GrabberLeft;
+import org.usfirst.frc.team6239.robot.commands.GrabberRight;
 import org.usfirst.frc.team6239.robot.commands.grabbain;
 import org.usfirst.frc.team6239.robot.commands.grabbaout;
 import org.usfirst.frc.team6239.robot.commands.liftcommand;
@@ -66,5 +68,7 @@ public class OI {
 		grabin.whileHeld(new grabbain());
 		grabLeft = new JoystickButton(gamepad, 7);
 		grabRight = new JoystickButton(gamepad, 8);
+		grabLeft.whileHeld(new GrabberLeft());
+		grabRight.whileHeld(new GrabberRight());
 	}
 }

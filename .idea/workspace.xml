@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="87c21ac4-083b-4643-a0a5-d6b4f5f0694b" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/usfirst/frc/team6239/robot/OI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/usfirst/frc/team6239/robot/OI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/usfirst/frc/team6239/robot/Robot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/usfirst/frc/team6239/robot/Robot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/usfirst/frc/team6239/robot/commands/ArmDownCommand.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/usfirst/frc/team6239/robot/commands/ArmUpCommand.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/usfirst/frc/team6239/robot/commands/DriveCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/usfirst/frc/team6239/robot/commands/DriveCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/usfirst/frc/team6239/robot/subsystems/DriveSubsystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/usfirst/frc/team6239/robot/subsystems/DriveSubsystem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/usfirst/frc/team6239/robot/subsystems/grabba.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/usfirst/frc/team6239/robot/subsystems/grabba.java" afterDir="false" />
-    </list>
+    <list default="true" id="87c21ac4-083b-4643-a0a5-d6b4f5f0694b" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/bin/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -170,7 +161,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-9" />
     <option name="y" value="-9" />
     <option name="width" value="1938" />
@@ -314,16 +305,15 @@
       <updated>1519863749470</updated>
       <workItem from="1519863755102" duration="4631000" />
       <workItem from="1520475865088" duration="1461000" />
-      <workItem from="1520692614324" duration="4257000" />
+      <workItem from="1520692614324" duration="4797000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10349000" />
+    <option name="totallyTimeSpent" value="10889000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
-    <editor active="true" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />

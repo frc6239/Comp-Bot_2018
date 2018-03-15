@@ -14,15 +14,15 @@ public class GrabberRight extends Command {
     }
 
     protected void execute() {
-        Robot.robotmap.grabberRight.set(-.5);
+        Robot.grabber.goRight();
     }
 
     protected void end() {
-        Robot.robotmap.grabberRight.set(0);
+        Robot.grabber.stop();
     }
 
     protected void interrupted() {
-        Robot.robotmap.grabberRight.set(0);
+    	Robot.grabber.stop();
         end();
     }
 }

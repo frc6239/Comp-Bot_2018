@@ -9,6 +9,8 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.Spark;
 
+
+
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring, makes checking
@@ -78,11 +80,14 @@ public class RobotMap {
 		backLeftSpeedControl = new Spark(4);
 		backLeftRotControl = new Spark(5);
 		
-		grabberRight = new Spark(8);
-		grabberLeft = new Spark(9);
-		movearms = new Spark(12);
-		lifterTop = new Spark(11);
-		lifterBottom = new Spark(10);
+		grabberRight = new Spark(9);
+		grabberLeft = new Spark(8);
+		movearms = new Spark(getChannelFromPin(PinType.PWM, 2));
+		lifterTop = new Spark(getChannelFromPin(PinType.PWM, 1));
+		lifterBottom = new Spark(getChannelFromPin(PinType.PWM, 0));
+		movearms.setSafetyEnabled(false);
+		lifterTop.setSafetyEnabled(false);
+		lifterBottom.setSafetyEnabled(false);
 		//System.out.println("Wheeldrive working");
 		//If we use the navx we will be able to have enough DIO Ports to support all the encoders
 		
@@ -90,7 +95,7 @@ public class RobotMap {
 		frontLeftRotEnc = new AbsoluteEncoder(3);
 		backRightRotEnc = new AbsoluteEncoder(0);
 		backLeftRotEnc = new AbsoluteEncoder(2);
-		
+
 		frontRightController = new PIDController(.006, .004, 0, frontRightRotEnc, frontRightRotControl);
 		frontLeftController = new PIDController(.006, .004, 0, frontLeftRotEnc, frontLeftRotControl);
 		backRightController = new PIDController(.006, .004, 0, backRightRotEnc, backRightRotControl);
@@ -110,5 +115,53 @@ public class RobotMap {
 		
 		
 	}
+	
+    public enum PinType { DigitalIO, PWM, AnalogIn, AnalogOut };
+    
+    public final int MAX_NAVX_MXP_DIGIO_PIN_NUMBER      = 9;
+    public final int MAX_NAVX_MXP_ANALOGIN_PIN_NUMBER   = 3;
+    public final int MAX_NAVX_MXP_ANALOGOUT_PIN_NUMBER  = 1;
+    public final int NUM_ROBORIO_ONBOARD_DIGIO_PINS     = 10;
+    public final int NUM_ROBORIO_ONBOARD_PWM_PINS       = 10;
+    public final int NUM_ROBORIO_ONBOARD_ANALOGIN_PINS  = 4;
+    
+    /* getChannelFromPin( PinType, int ) - converts from a navX MXP */
+    /* Pin type and number to the corresponding RoboRIO Channel     */
+    /* Number, which is used by the WPI Library functions.          */
+    
+    public int getChannelFromPin( PinType type, int io_pin_number ) throws IllegalArgumentException {
+        int roborio_channel = 0;
+        if ( io_pin_number < 0 ) {
+            throw new IllegalArgumentException("Error:  navX MXP I/O Pin #");
+        }
+        switch ( type ) {
+        case DigitalIO:
+            if ( io_pin_number > MAX_NAVX_MXP_DIGIO_PIN_NUMBER ) {
+                throw new IllegalArgumentException("Error:  Invalid navX MXP Digital I/O Pin #");
+            }
+            roborio_channel = io_pin_number + NUM_ROBORIO_ONBOARD_DIGIO_PINS + 
+                              (io_pin_number > 3 ? 4 : 0);
+            break;
+        case PWM:
+            if ( io_pin_number > MAX_NAVX_MXP_DIGIO_PIN_NUMBER ) {
+                throw new IllegalArgumentException("Error:  Invalid navX MXP Digital I/O Pin #");
+            }
+            roborio_channel = io_pin_number + NUM_ROBORIO_ONBOARD_PWM_PINS;
+            break;
+        case AnalogIn:
+            if ( io_pin_number > MAX_NAVX_MXP_ANALOGIN_PIN_NUMBER ) {
+                throw new IllegalArgumentException("Error:  Invalid navX MXP Analog Input Pin #");
+            }
+            roborio_channel = io_pin_number + NUM_ROBORIO_ONBOARD_ANALOGIN_PINS;
+            break;
+        case AnalogOut:
+            if ( io_pin_number > MAX_NAVX_MXP_ANALOGOUT_PIN_NUMBER ) {
+                throw new IllegalArgumentException("Error:  Invalid navX MXP Analog Output Pin #");
+            }
+            roborio_channel = io_pin_number;            
+            break;
+        }
+        return roborio_channel;
+    }
 }
   
