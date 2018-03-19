@@ -63,6 +63,12 @@ public class RobotMap {
 	public static WheelDrive backLeft;
 	//Declare SwerveDrive
 	public SwerveDrive driveTrain;
+
+	public double P=.014;
+	public double I=.0065;
+	public double D=.008;
+
+//.01, .008, 0
 	
 	public DigitalInput grabberArmLimit;
 	
@@ -71,14 +77,14 @@ public class RobotMap {
 		//Finalize Spark declaration in constructor
 		//probably have to use navx for extra pwm ports too
 		
-		frontRightSpeedControl = new Spark(2);
-		frontRightRotControl = new Spark(3);
-		frontLeftSpeedControl = new Spark(6);
-		frontLeftRotControl = new Spark(7);
-		backRightSpeedControl = new Spark(0);
-		backRightRotControl = new Spark(1);
-		backLeftSpeedControl = new Spark(4);
-		backLeftRotControl = new Spark(5);
+		frontRightSpeedControl = new Spark(4);
+		frontRightRotControl = new Spark(5);
+		frontLeftSpeedControl = new Spark(0);
+		frontLeftRotControl = new Spark(1);
+		backRightSpeedControl = new Spark(6);
+		backRightRotControl = new Spark(7);
+		backLeftSpeedControl = new Spark(2);
+		backLeftRotControl = new Spark(3);
 		
 		grabberRight = new Spark(9);
 		grabberLeft = new Spark(8);
@@ -92,14 +98,14 @@ public class RobotMap {
 		//If we use the navx we will be able to have enough DIO Ports to support all the encoders
 		
 		frontRightRotEnc = new AbsoluteEncoder(1);
-		frontLeftRotEnc = new AbsoluteEncoder(3);
-		backRightRotEnc = new AbsoluteEncoder(0);
+		frontLeftRotEnc = new AbsoluteEncoder(0);
+		backRightRotEnc = new AbsoluteEncoder(3);
 		backLeftRotEnc = new AbsoluteEncoder(2);
 
-		frontRightController = new PIDController(.006, .004, 0, frontRightRotEnc, frontRightRotControl);
-		frontLeftController = new PIDController(.006, .004, 0, frontLeftRotEnc, frontLeftRotControl);
-		backRightController = new PIDController(.006, .004, 0, backRightRotEnc, backRightRotControl);
-		backLeftController = new PIDController(.006, .004, 0, backLeftRotEnc, backLeftRotControl);
+		frontRightController = new PIDController(P, I, D, frontRightRotEnc, frontRightRotControl);
+		frontLeftController = new PIDController(P, I, D, frontLeftRotEnc, frontLeftRotControl);
+		backRightController = new PIDController(P, I, D, backRightRotEnc, backRightRotControl);
+		backLeftController = new PIDController(.013, .006, .007, backLeftRotEnc, backLeftRotControl);
 		
 		//Finalize Encoder Declaration in constructor
 		//armEncoder = new Encoder(0, 1);
@@ -164,3 +170,4 @@ public class RobotMap {
         return roborio_channel;
     }
 }
+  

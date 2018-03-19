@@ -10,25 +10,32 @@ public class liftsubsystem extends Subsystem{
 	protected void initDefaultCommand() {
 		
 	}
-	//TODO Test these values
+	
 	public void liftup() {
 		
-		Robot.robotmap.lifterTop.set(1);
-		Robot.robotmap.lifterBottom.set(0.75);
+		Robot.robotmap.lifterTop.set(.75);
+		Robot.robotmap.lifterBottom.set(-0.65);
+		System.out.println(Robot.robotmap.lifterBottom.get());
 		
 	}
 	
 	public void liftdown() {
 		
-		Robot.robotmap.lifterTop.set(-1);
-		Robot.robotmap.lifterBottom.set(-0.75);
-		
+		Robot.robotmap.lifterTop.set(-.75);
+		Robot.robotmap.lifterBottom.set(0.45);
+		System.out.println(Robot.robotmap.lifterBottom.get());
 	}
 
 	public void stop() {
 		
-		Robot.robotmap.lifterTop.set(0);
-		Robot.robotmap.lifterBottom.set(0);
+		Robot.robotmap.lifterTop.set(-.2);
+		Robot.robotmap.lifterBottom.set(-.2);
+		
+	}
+	
+	public void climbUp() {
+		
+		Robot.robotmap.lifterBottom.set(-.5);
 		
 	}
 

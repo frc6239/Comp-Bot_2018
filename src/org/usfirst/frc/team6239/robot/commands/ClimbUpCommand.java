@@ -4,27 +4,27 @@ import org.usfirst.frc.team6239.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class grabbaout extends Command {
-	
-	public grabbaout() {
-		requires(Robot.grabber);
+public class ClimbUpCommand extends Command {
+
+	@Override
+	protected void execute() {
+		Robot.liftsub.climbUp();
 	}
 
-	protected void execute() {
-		Robot.grabber.out();
-		
-	}
-	
+	@Override
 	protected void end() {
-		Robot.grabber.stop();
+		Robot.liftsub.stop();
 	}
-	
+
+	@Override
 	protected void interrupted() {
+		Robot.liftsub.stop();
 		end();
 	}
 
+	@Override
 	protected boolean isFinished() {
-		
+		// TODO Auto-generated method stub
 		return false;
 	}
 

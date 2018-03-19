@@ -1,89 +1,180 @@
-package org.usfirst.frc.team6239.robot.swervedrive;
+                      package org.usfirst.frc.team6239.robot.swervedrive;
 
+import org.usfirst.frc.team6239.robot.Robot;
 
 /**
  * Created by Eric Engelhart on 3/17/2017.
  */
 public class SwerveDrive {
 
-	public final double L = 21;
-	public final double W = 22;
+	public final double L = 23.5;
+	public final double W = 25;
+	
+	public double orientationOffset;
+	public static boolean isFieldCentric = true;
+	double angleToDiagonal;
 	
 	WheelDrive frontRight, frontLeft, backLeft, backRight;
-	
+	WheelDrive[] wheelArray1, wheelArray2;
 	public SwerveDrive(WheelDrive frontRight, WheelDrive frontLeft, WheelDrive backLeft, WheelDrive backRight) {
 		this.frontRight = frontRight;
 		this.frontLeft = frontLeft;
 		this.backLeft = backLeft;
 		this.backRight = backRight;
+		this.angleToDiagonal = Math.toDegrees(Math.atan2(L, W));
+		this.frontRight.setRAngle(-(90 - angleToDiagonal));
+		this.frontLeft.setRAngle(-(angleToDiagonal + 90));
+		this.backRight.setRAngle(-(angleToDiagonal + 270));
+		this.backLeft.setRAngle(-(270 - angleToDiagonal));
+
+
+		this.wheelArray1 = new WheelDrive[] { this.frontLeft, this.backRight };
+		this.wheelArray2 = new WheelDrive[] { this.backLeft, this.frontRight };
+
+
+
+
+
+
+
+
 	}
 	
-	public void drive (double x, double y, double z, double speed, double angle) {
-	    double r = Math.sqrt ((L * L) + (W * W));
+	public void drive (double y1, double x1, double x2, double angle) {
 
-		x = -(-y) * Math.cos(angle) + x * Math.sin(angle);
-		y = -y * Math.cos(angle) + x * Math.cos(angle);
-		y=-y;
 
-	    
-	    double a = x - z * (L / r);
-	    double b = x + z * (L / r);
-	    double c = y - z * (W / r);
-	    double d = y + z * (W / r);
+		
+	double translationalXComponent = -x1;
+		double translationalYComponent = y1;
+		double translationalMagnitude;
+		double translationalAngle;
 
-	    double backRightSpeed = Math.sqrt ((a * a) + (d * d));
-	    double backLeftSpeed = Math.sqrt ((a * a) + (c * c));
-	    double frontRightSpeed = Math.sqrt ((b * b) + (d * d));
-	    double frontLeftSpeed = Math.sqrt ((b * b) + (c * c));
-	    
-	    double max = frontLeftSpeed;
-	    if (frontLeftSpeed > max) {
-	    	frontLeftSpeed = max;
-		} if (frontRightSpeed > max) {
-	    	frontRightSpeed = max;
-		} if (backLeftSpeed > max) {
-	    	backLeftSpeed = max;
-		} if (backRightSpeed > max) {
-	    	backRightSpeed = max;
+		double rAxis = x2;
+		double rotateXComponent;
+		double rotateYComponent;
+		double fastestSpeed = 0;
+
+		// Deadband
+		if (Math.abs(x1) < 0.1) {
+			translationalXComponent = 0;
+			x1 = 0;
 		}
-		if (max > 1) {
-	    	frontLeftSpeed = frontLeftSpeed/max;
-	    	frontRightSpeed = frontRightSpeed/max;
-	    	backLeftSpeed = backLeftSpeed/max;
-	    	backRightSpeed = backRightSpeed/max;
-		}
-	    
-	    backRightSpeed *= speed;
-	    backLeftSpeed *= speed;
-	    frontRightSpeed *= speed;
-	    frontLeftSpeed *= speed;
 
-	    double backRightAngle = Math.atan2 (d, a) * (180/ Math.PI);
-	    double backLeftAngle = Math.atan2 (c, a) * (180/ Math.PI);
-	    double frontRightAngle = Math.atan2 (d, b) * (180/ Math.PI);
-	    double frontLeftAngle = Math.atan2 (c, b) * (180/ Math.PI);
+		if (Math.abs(y1) < 0.1) {
+			translationalYComponent = 0;
+			y1 = 0;
+		}
+
+		if (Math.abs(x2) < 0.1) {
+			rAxis = 0;
+			x2 = 0;
+		}
+		//System.out.println(this.isFieldCentric);
+		if (this.isFieldCentric == true) {
+			
+			orientationOffset = Robot.navX.getYaw() ;
+			if (orientationOffset < 0) {
+				double x = orientationOffset+ 360 ;
+				orientationOffset = x;
+			}
+			if(orientationOffset >= 360){ orientationOffset = 0;}
+			
+		} if (this.isFieldCentric == false) {
+			orientationOffset = 0;
+			//System.out.println("or:  "+orientationOffset);
+		}
+		
+
+		translationalYComponent *= -1;
+		
+
+	orientationOffset = orientationOffset % 360;
+
+		double rotationMagnitude = Math.abs(rAxis);
+
+		translationalMagnitude = Math.sqrt(Math.pow(translationalYComponent, 2) + Math.pow(translationalXComponent, 2));
+		translationalAngle = Math.toDegrees(Math.atan2(translationalYComponent, translationalXComponent));
+
+		translationalAngle -= orientationOffset; 
+
+	translationalAngle = translationalAngle % 360;
+		if (translationalAngle < 0) {
+			translationalAngle += 360;
+		}
+
+		translationalYComponent = Math.sin(Math.toRadians(translationalAngle)) * translationalMagnitude; 
+
+		translationalXComponent = Math.cos(Math.toRadians(translationalAngle)) * translationalMagnitude; 
+
+
+		for (WheelDrive wheel : wheelArray1) {
+
+			rotateXComponent = Math.cos(Math.toRadians(wheel.getRAngle())) * rotationMagnitude; 
+
+			rotateYComponent = Math.sin(Math.toRadians(wheel.getRAngle())) * rotationMagnitude; 
+
+
+			if (rAxis > 0) {
+				rotateXComponent = -rotateXComponent;
+				rotateYComponent = -rotateYComponent;
+			}
+
+			wheel.setSpeed(Math.sqrt(Math.pow(rotateXComponent + translationalXComponent, 2)
+					+ Math.pow((rotateYComponent + translationalYComponent), 2)));
+
+			wheel.setAngle((Math.toDegrees(Math.atan2((-rotateYComponent + translationalYComponent),
+					(rotateXComponent + translationalXComponent)))));
+
+			if (wheel.getSpeed() > fastestSpeed) {
+
+				fastestSpeed = wheel.getSpeed();
+			}
+		}
+		for (WheelDrive wheel : wheelArray2) {
+
+			rotateXComponent = Math.cos(Math.toRadians(wheel.getRAngle())) * rotationMagnitude; 
+			rotateYComponent = Math.sin(Math.toRadians(wheel.getRAngle())) * rotationMagnitude; 
+
+
+			if (rAxis > 0) {
+				rotateXComponent = -rotateXComponent;
+				rotateYComponent = -rotateYComponent;
+			}
+
+			wheel.setSpeed(Math.sqrt(Math.pow(rotateXComponent + translationalXComponent, 2)
+					+ Math.pow((rotateYComponent + translationalYComponent), 2)));
+
+			wheel.setAngle((Math.toDegrees(Math.atan2((rotateYComponent + translationalYComponent),
+					(-rotateXComponent + translationalXComponent)))));
+
+
+			if (wheel.getSpeed() > fastestSpeed) {
+				fastestSpeed = wheel.getSpeed();
+			}
+
+		}
+
+		if (fastestSpeed > 1) { 
+			for (WheelDrive wheel : wheelArray1) {
+				wheel.setSpeed(wheel.getSpeed() / fastestSpeed);
+			}
+			for (WheelDrive wheel : wheelArray2) {
+				wheel.setSpeed(wheel.getSpeed() / fastestSpeed);
+			}
+		}
+
+
 	    
-//	    backRightAngle += 90;
-//	    backLeftAngle += 90;
-//	    frontLeftAngle += 90;
-//	    frontRightAngle += 90;
-	    
-	    System.out.println("x1: " + x + " y1: " +  y + " x2: " + z);
-	    System.out.println("a: " + a + " b: " + b + " c: " + c + " d: " + d);
-	    System.out.println("PI: " + Math.PI);
-	    System.out.println("atan2(a, d): " + Math.atan2(b, d));
-	    System.out.println("Back Right Angle: " + backRightAngle);
-	    System.out.println("Back Left Angle: " + backLeftAngle);
-	    System.out.println("Front Right Angle: " + frontRightAngle);
-	    System.out.println("Front Left Angle: " + frontLeftAngle);
-	    
-	    
-	    
-	    
-	    backRight.update (backRightSpeed, backRightAngle);
-	    backLeft.update (backLeftSpeed, backLeftAngle);
-	    frontRight.update (frontRightSpeed, frontRightAngle);
-	    frontLeft.update (frontLeftSpeed, frontLeftAngle);
-	    
+	}
+	
+	public void setFieldCentric(){
+		this.isFieldCentric = true;
+	}
+	public void setRobotCentric(){
+		this.isFieldCentric = false;
+		
+	}
+	public boolean getFieldCentric(){
+		return this.isFieldCentric;
 	}
 }

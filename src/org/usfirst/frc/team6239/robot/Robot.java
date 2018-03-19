@@ -2,6 +2,8 @@ package org.usfirst.frc.team6239.robot;
 
 import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.Timer;
+
+import org.usfirst.frc.team6239.robot.subsystems.DriveButtons;
 import org.usfirst.frc.team6239.robot.subsystems.DriveSubsystem;
 import org.usfirst.frc.team6239.robot.subsystems.grabba;
 import org.usfirst.frc.team6239.robot.subsystems.liftsubsystem;
@@ -28,6 +30,7 @@ public class Robot extends IterativeRobot {
     public static DriveSubsystem DRIVE_SUB;
     public static liftsubsystem liftsub;
     public static AHRS navX;
+    public static DriveButtons drivebuttons;
     //public static NetworkTable table;  
     //declare PIDControllers
     //variables for drive, google it if you want to know what they mean
@@ -35,16 +38,16 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 
 		navX = new AHRS(kMXP);
-		navX.reset();
-
+	
 		robotmap = new RobotMap();
 		//armscontroller = new PIDController(1, 0, 0, robotmap.armEncoder, robotmap.movearms);
 		DRIVE_SUB = new DriveSubsystem();
 		liftsub = new liftsubsystem();
 		grabber = new grabba();
+		drivebuttons = new DriveButtons();
 		oi = new OI();
 		//table = NetworkTable.getTable("Smartdashboard");
-		//System.out.println(DRIVE_SUB);
+		//.out.println(DRIVE_SUB);
 		//Declare Subsystems in robotInit, like a constructor
 		//Declare PIDControllers in robotInit, /\
 		//RobotMap.driveTrain.setWheelbaseTrackwidth(wheelbase, trackwidth);
@@ -54,18 +57,20 @@ public class Robot extends IterativeRobot {
 	}
 	
 	public void autonomousInit() {
-
-		Timer.delay(4);
-		Robot.robotmap.driveTrain.drive(0, .4, 0, 1, navX.getAngle());
-		Timer.delay(4);
-		Robot.robotmap.driveTrain.drive(0, 0, 0, 1, navX.getAngle());
-		
-	}
+		Robot.navX.resetDisplacement();
+		Robot.navX.reset();
+	Timer.delay(4);
+		Robot.robotmap.driveTrain.drive(.6, 0, 0, navX.getAngle());
+		Timer.delay(2);
+		Robot.robotmap.driveTrain.drive(0, 0, 0, navX.getAngle());
+//		
+	};
 	
 	public void teleopInit() {
-		
-		
-		
+		Robot.navX.resetDisplacement();
+		Robot.navX.reset();
+	
+		//.robotmap.driveTrain.drive(0,0,0,0,0);
 	}
 	
 	public void robotPeriodic() {
@@ -88,7 +93,14 @@ public class Robot extends IterativeRobot {
 
 
 	public void autonomousPeriodic() {
-		//Scheduler.getInstance().run();
+
+		
+		
+		
+		
+		
+		
+		Scheduler.getInstance().run();
 		
 	}
 
