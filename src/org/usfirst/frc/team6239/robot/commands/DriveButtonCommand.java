@@ -18,17 +18,17 @@ public class DriveButtonCommand extends Command {
 		
 		
 		Robot.drivebuttons.robotCentric();
-		//System.out.println("Robotcentirco");
+		
 	}
 	protected void end(){
 		Robot.drivebuttons.fieldCentric();
-		//System.out.println("fieldcentirco");
+
 	}
 	
 
 	@Override
 	protected boolean isFinished() {
-		// TODO Auto-generated method stub
+
 		return false;
 	}
 

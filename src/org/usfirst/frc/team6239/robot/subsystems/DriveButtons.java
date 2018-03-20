@@ -8,23 +8,23 @@ public class DriveButtons extends Subsystem {
 
 	@Override
 	protected void initDefaultCommand() {
-		// TODO Auto-generated method stub
+
 		
 	}
 	
 	public void fieldCentric() {
-		Robot.robotmap.driveTrain.setFieldCentric();
-	//	System.out.println(Robot.robotmap.driveTrain.getFieldCentric());
+		Robot.driveTrain.setFieldCentric();
+
 	}
 	
 	public void robotCentric() {
-		Robot.robotmap.driveTrain.setRobotCentric();
-		//System.out.println(Robot.robotmap.driveTrain.getFieldCentric());
+		Robot.driveTrain.setRobotCentric();
+
 
 	}
 	
 	public void navXReset() {
-		Robot.navX.reset();
+		Robot.robotmap.navX.reset();
 	}
 
 }

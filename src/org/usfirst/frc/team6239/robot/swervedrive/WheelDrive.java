@@ -14,14 +14,14 @@ public class WheelDrive {
 	public WheelDrive(Spark angleMotor, Spark speedMotor, PIDController pidController) {
 		this.angleMotor = angleMotor;
 		this.speedMotor = speedMotor;
-		//pidController = new PIDController (.01, .001, 0, new AbsoluteEncoder(encoder), this.angleMotor);
+
 		this.pidController = pidController;
 		this.pidController.setOutputRange(-1, 1);
 		this.pidController.setInputRange(-180f, 180f);
 	    this.pidController.setContinuous();
 	    this.pidController.enable();
 	    this.pidController.setSetpoint(0);
-	    //System.out.println("Wheeldrive working");
+
 	}
 	
 	public void setSpeed (double speed) {

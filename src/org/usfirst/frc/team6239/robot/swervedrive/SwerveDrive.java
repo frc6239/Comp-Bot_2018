@@ -2,25 +2,26 @@
 
 import org.usfirst.frc.team6239.robot.Robot;
 
-/**
- * Created by Eric Engelhart on 3/17/2017.
- */
+import edu.wpi.first.wpilibj.PIDController;
+import edu.wpi.first.wpilibj.Spark;
+
+
 public class SwerveDrive {
 
 	public final double L = 23.5;
 	public final double W = 25;
 	
 	public double orientationOffset;
-	public static boolean isFieldCentric = true;
-	double angleToDiagonal;
+	public boolean isFieldCentric = true;
+	public double angleToDiagonal;
 	
 	WheelDrive frontRight, frontLeft, backLeft, backRight;
 	WheelDrive[] wheelArray1, wheelArray2;
-	public SwerveDrive(WheelDrive frontRight, WheelDrive frontLeft, WheelDrive backLeft, WheelDrive backRight) {
-		this.frontRight = frontRight;
-		this.frontLeft = frontLeft;
-		this.backLeft = backLeft;
-		this.backRight = backRight;
+	public SwerveDrive(Spark[] speedController,Spark[] rotationalController,PIDController[] encController) {
+		this.frontRight =new   WheelDrive(rotationalController[0], speedController[0], encController[0]);
+		this.frontLeft =new    WheelDrive(rotationalController[1], speedController[1], encController[1]);
+		this.backLeft =new     WheelDrive(rotationalController[2], speedController[2], encController[2]);
+		this.backRight =new WheelDrive(rotationalController[3], speedController[3], encController[2]);
 		this.angleToDiagonal = Math.toDegrees(Math.atan2(L, W));
 		this.frontRight.setRAngle(-(90 - angleToDiagonal));
 		this.frontLeft.setRAngle(-(angleToDiagonal + 90));
@@ -40,7 +41,7 @@ public class SwerveDrive {
 
 	}
 	
-	public void drive (double y1, double x1, double x2, double angle) {
+	public void drive (double y1, double x1, double x2) {
 
 
 		
@@ -69,10 +70,10 @@ public class SwerveDrive {
 			rAxis = 0;
 			x2 = 0;
 		}
-		//System.out.println(this.isFieldCentric);
+
 		if (this.isFieldCentric == true) {
 			
-			orientationOffset = Robot.navX.getYaw() ;
+			orientationOffset = Robot.robotmap.navX.getYaw() ;
 			if (orientationOffset < 0) {
 				double x = orientationOffset+ 360 ;
 				orientationOffset = x;
@@ -81,7 +82,7 @@ public class SwerveDrive {
 			
 		} if (this.isFieldCentric == false) {
 			orientationOffset = 0;
-			//System.out.println("or:  "+orientationOffset);
+
 		}
 		
 

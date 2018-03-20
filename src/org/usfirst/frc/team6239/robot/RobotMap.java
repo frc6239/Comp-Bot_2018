@@ -4,31 +4,18 @@ import org.usfirst.frc.team6239.robot.swervedrive.AbsoluteEncoder;
 import org.usfirst.frc.team6239.robot.swervedrive.SwerveDrive;
 import org.usfirst.frc.team6239.robot.swervedrive.WheelDrive;
 
+import com.kauailabs.navx.frc.AHRS;
+
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.Spark;
 
+import static edu.wpi.first.wpilibj.SerialPort.Port.kMXP;
 
 
-/**
- * The RobotMap is a mapping from the ports sensors and actuators are wired into
- * to a variable name. This provides flexibility changing wiring, makes checking
- * the wiring easier and significantly reduces the number of magic numbers
- * floating around.
- */
 public class RobotMap {
-	// For example to map the left and right motors, you could define the
-	// following variables to use with your drivetrain subsystem.
-	// public static int leftMotor = 1;
-	// public static int rightMotor = 2;
 
-	// If you are using multiple modules, make sure to define both the port
-	// number and the module. For example you with a rangefinder:
-	// public static int rangefinderPort = 1;
-	// public static int rangefinderModule = 1;
-	
-	//Declaring all sparks
 
 	public Spark frontRightRotControl;
 	public Spark frontRightSpeedControl;
@@ -43,40 +30,34 @@ public class RobotMap {
 	public Spark movearms;
 	public Spark lifterBottom;
 	public Spark lifterTop;
-    //public static PIDController frontRightController;
-    
-	//Declaring all encoders
+
 	public AbsoluteEncoder frontRightRotEnc;
 	public AbsoluteEncoder frontLeftRotEnc;
 	public AbsoluteEncoder backRightRotEnc;
 	public AbsoluteEncoder backLeftRotEnc;
-	//Declare SwerveWheels
-	
+
+	public  AHRS navX;
+
 	public PIDController frontRightController;
 	public PIDController frontLeftController;
 	public PIDController backRightController;
 	public PIDController backLeftController;
 	
-	public static WheelDrive frontRight;
-	public static WheelDrive frontLeft;
-	public static WheelDrive backRight;
-	public static WheelDrive backLeft;
-	//Declare SwerveDrive
-	public SwerveDrive driveTrain;
+	public Spark[] speedController;
+	public Spark[] rotationalController;
+	public PIDController[] encController;
+
+
 
 	public double P=.014;
 	public double I=.0065;
 	public double D=.008;
 
-//.01, .008, 0
-	
+
 	public DigitalInput grabberArmLimit;
 	
 	RobotMap() {
-		
-		//Finalize Spark declaration in constructor
-		//probably have to use navx for extra pwm ports too
-		
+
 		frontRightSpeedControl = new Spark(4);
 		frontRightRotControl = new Spark(5);
 		frontLeftSpeedControl = new Spark(0);
@@ -86,6 +67,14 @@ public class RobotMap {
 		backLeftSpeedControl = new Spark(2);
 		backLeftRotControl = new Spark(3);
 		
+		speedController = new Spark[]{ frontRightSpeedControl,frontLeftSpeedControl,backRightSpeedControl,backLeftSpeedControl};
+		rotationalController = new Spark[]{frontRightRotControl,frontLeftRotControl,backRightRotControl,backLeftRotControl};
+
+
+
+
+
+
 		grabberRight = new Spark(9);
 		grabberLeft = new Spark(8);
 		movearms = new Spark(getChannelFromPin(PinType.PWM, 2));
@@ -94,8 +83,7 @@ public class RobotMap {
 		movearms.setSafetyEnabled(false);
 		lifterTop.setSafetyEnabled(false);
 		lifterBottom.setSafetyEnabled(false);
-		//System.out.println("Wheeldrive working");
-		//If we use the navx we will be able to have enough DIO Ports to support all the encoders
+
 		
 		frontRightRotEnc = new AbsoluteEncoder(1);
 		frontLeftRotEnc = new AbsoluteEncoder(0);
@@ -105,20 +93,17 @@ public class RobotMap {
 		frontRightController = new PIDController(P, I, D, frontRightRotEnc, frontRightRotControl);
 		frontLeftController = new PIDController(P, I, D, frontLeftRotEnc, frontLeftRotControl);
 		backRightController = new PIDController(P, I, D, backRightRotEnc, backRightRotControl);
-		backLeftController = new PIDController(.013, .006, .007, backLeftRotEnc, backLeftRotControl);
+		backLeftController = new PIDController(P, I, D, backLeftRotEnc, backLeftRotControl);
 		
-		//Finalize Encoder Declaration in constructor
-		//armEncoder = new Encoder(0, 1);
-		//Finalize declaration of WheelDrives
-		frontRight = new WheelDrive(frontRightRotControl, frontRightSpeedControl, frontRightController);
-		frontLeft = new WheelDrive(frontLeftRotControl, frontLeftSpeedControl, frontLeftController);
-		backRight = new WheelDrive(backRightRotControl, backRightSpeedControl, backRightController);
-		backLeft = new WheelDrive(backLeftRotControl, backLeftSpeedControl, backLeftController);
-		//Finalize declaration of SwerveDrive
-		driveTrain = new SwerveDrive(frontRight, frontLeft, backLeft, backRight);
+		encController = new PIDController[]{frontRightController,frontLeftController,backRightController,backLeftController};
+
+	
+		
 		
 		grabberArmLimit = new DigitalInput(0);
 		
+
+		navX = new AHRS(kMXP);
 		
 	}
 	
@@ -131,9 +116,7 @@ public class RobotMap {
     public final int NUM_ROBORIO_ONBOARD_PWM_PINS       = 10;
     public final int NUM_ROBORIO_ONBOARD_ANALOGIN_PINS  = 4;
     
-    /* getChannelFromPin( PinType, int ) - converts from a navX MXP */
-    /* Pin type and number to the corresponding RoboRIO Channel     */
-    /* Number, which is used by the WPI Library functions.          */
+
     
     public int getChannelFromPin( PinType type, int io_pin_number ) throws IllegalArgumentException {
         int roborio_channel = 0;

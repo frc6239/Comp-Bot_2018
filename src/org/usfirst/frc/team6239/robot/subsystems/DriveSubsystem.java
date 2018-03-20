@@ -10,15 +10,14 @@ public class DriveSubsystem extends Subsystem {
 	protected void initDefaultCommand() {
 
 		setDefaultCommand(new DriveCommand());
-		//System.out.println("Working1");
+
 
 
 	}
-	//Start driving
+
 	public void drive() {
 
-	//	Robot.robotmap.driveTrain.setFieldCentric();
-		Robot.robotmap.driveTrain.drive(Robot.oi.stickcontrollerL.getX(), Robot.oi.stickcontrollerL.getY(), Robot.oi.stickcontrollerR.getX(), Robot.navX.getYaw());
+		Robot.driveTrain.drive(Robot.oi.stickcontrollerL.getX(), Robot.oi.stickcontrollerL.getY(), Robot.oi.stickcontrollerR.getX());
 		
 	}
 

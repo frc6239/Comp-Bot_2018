@@ -15,7 +15,7 @@ public class liftsubsystem extends Subsystem{
 		
 		Robot.robotmap.lifterTop.set(.75);
 		Robot.robotmap.lifterBottom.set(-0.65);
-		System.out.println(Robot.robotmap.lifterBottom.get());
+
 		
 	}
 	
@@ -23,7 +23,7 @@ public class liftsubsystem extends Subsystem{
 		
 		Robot.robotmap.lifterTop.set(-.75);
 		Robot.robotmap.lifterBottom.set(0.45);
-		System.out.println(Robot.robotmap.lifterBottom.get());
+
 	}
 
 	public void stop() {
