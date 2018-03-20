@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class liftsubsystem extends Subsystem{
 		
 	
+	@Override
 	protected void initDefaultCommand() {
 		
 	}

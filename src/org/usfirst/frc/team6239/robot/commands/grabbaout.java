@@ -10,19 +10,23 @@ public class grabbaout extends Command {
 		requires(Robot.grabber);
 	}
 
+	@Override
 	protected void execute() {
 		Robot.grabber.out();
 		
 	}
 	
+	@Override
 	protected void end() {
 		Robot.grabber.stop();
 	}
 	
+	@Override
 	protected void interrupted() {
 		end();
 	}
 
+	@Override
 	protected boolean isFinished() {
 		
 		return false;

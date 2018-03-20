@@ -10,16 +10,19 @@ public class grabbain extends Command {
 
 	}
 	
+	@Override
 	protected void execute() {
 		Robot.grabber.in();
 	}
 
 	
+	@Override
 	protected void interrupted() {
 		Robot.grabber.stop();
 		end();
 	}
 
+	@Override
 	protected boolean isFinished() {
 		return false;
 	}

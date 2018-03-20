@@ -13,6 +13,7 @@ public class ResetNavCommand extends Command {
 	
 		return false;
 	}
+	@Override
 	protected void execute() {
 		Robot.robotmap.navX.resetDisplacement();
 		Robot.robotmap.navX.reset();

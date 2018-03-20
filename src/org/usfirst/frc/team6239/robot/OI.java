@@ -3,6 +3,7 @@ package org.usfirst.frc.team6239.robot;
 import org.usfirst.frc.team6239.robot.commands.DriveButtonCommand;
 import org.usfirst.frc.team6239.robot.commands.GrabberLeft;
 import org.usfirst.frc.team6239.robot.commands.GrabberRight;
+import org.usfirst.frc.team6239.robot.commands.ResetNavCommand;
 import org.usfirst.frc.team6239.robot.commands.grabbain;
 import org.usfirst.frc.team6239.robot.commands.grabbaout;
 import org.usfirst.frc.team6239.robot.commands.liftcommand;
@@ -25,6 +26,7 @@ public class OI {
 	public Button grabLeft;
 	public Button grabRight;
 	public Button switchRobotMode;
+	public Button ResetNavX;
 
 	OI() {
 		stickcontrollerL = new Joystick(1);
@@ -44,6 +46,9 @@ public class OI {
 		grabRight.whileHeld(new GrabberRight());
 		switchRobotMode = new JoystickButton(stickcontrollerR, 1);
 		switchRobotMode.whileHeld(new DriveButtonCommand());
+		ResetNavX = new JoystickButton(stickcontrollerL, 1);
+		ResetNavX.whenPressed(new ResetNavCommand());
+		
 		
 	}
 }

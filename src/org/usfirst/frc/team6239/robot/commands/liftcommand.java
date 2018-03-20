@@ -12,25 +12,30 @@ public class liftcommand extends Command {
 
 	}
 
+	@Override
 	protected void initialize() {
 			
 	}
 
 	
+	@Override
 	protected void execute() {
 			Robot.liftsub.liftup();
 	}
 
 
+	@Override
 	protected void end() {
 		Robot.liftsub.stop();
 	}
 
 	
+	@Override
 	protected void interrupted() {
 		end();
 	}
 
+	@Override
 	protected boolean isFinished() {
 		
 		return false;

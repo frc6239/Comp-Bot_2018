@@ -1,6 +1,5 @@
 package org.usfirst.frc.team6239.robot;
 
-import com.kauailabs.navx.frc.AHRS; 
 import edu.wpi.first.wpilibj.Timer;
 
 import org.usfirst.frc.team6239.robot.subsystems.DriveButtons;
@@ -10,7 +9,6 @@ import org.usfirst.frc.team6239.robot.subsystems.liftsubsystem;
 import org.usfirst.frc.team6239.robot.swervedrive.SwerveDrive;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.command.Scheduler;
 
 
@@ -31,6 +29,7 @@ public class Robot extends IterativeRobot {
     public  static liftsubsystem liftsub;
     public  static DriveButtons drivebuttons;
 	public static SwerveDrive driveTrain;
+	@Override
 	public void robotInit() {
 
 		robotmap = new RobotMap();
@@ -44,6 +43,7 @@ public class Robot extends IterativeRobot {
 		
 	}
 	
+	@Override
 	public void autonomousInit() {
 		robotmap.navX.resetDisplacement();
 		robotmap.navX.reset();
@@ -54,22 +54,26 @@ public class Robot extends IterativeRobot {
 //		
 	};
 	
+	@Override
 	public void teleopInit() {
 
 	}
 	
+	@Override
 	public void robotPeriodic() {
 		Scheduler.getInstance().run();
 		
 		
 	}
 
+	@Override
 	public void disabledInit() {
 		
 		
 		
 	}
 
+	@Override
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
 		
@@ -77,6 +81,7 @@ public class Robot extends IterativeRobot {
 	}
 
 
+	@Override
 	public void autonomousPeriodic() {
 
 		
@@ -90,6 +95,7 @@ public class Robot extends IterativeRobot {
 	}
 
 	
+	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
 

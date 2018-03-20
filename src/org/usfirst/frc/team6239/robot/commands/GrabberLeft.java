@@ -9,19 +9,23 @@ public class GrabberLeft extends Command {
         requires(Robot.grabber);
     }
 
-    protected boolean isFinished() {
+    @Override
+	protected boolean isFinished() {
         return false;
     }
 
-    protected void execute() {
+    @Override
+	protected void execute() {
         Robot.grabber.goLeft();
     }
 
-    protected void end() {
+    @Override
+	protected void end() {
         Robot.grabber.stop();
     }
 
-    protected void interrupted() {
+    @Override
+	protected void interrupted() {
         Robot.grabber.stop();
         end();
     }

@@ -14,25 +14,30 @@ public class lowercommand extends Command {
     }
 
 
-    protected void initialize() {
+    @Override
+	protected void initialize() {
     }
 
 
-    protected void execute() {
+    @Override
+	protected void execute() {
     	Robot.liftsub.liftdown();
     }
 
 
-    protected boolean isFinished() {
+    @Override
+	protected boolean isFinished() {
         return false;
     }
 
 
-    protected void end() {
+    @Override
+	protected void end() {
     	Robot.liftsub.stop();
     }
 
-    protected void interrupted() {
+    @Override
+	protected void interrupted() {
     	end();
     }
 }

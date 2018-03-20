@@ -6,7 +6,8 @@ import org.usfirst.frc.team6239.robot.Robot;
 public class grabba extends Subsystem {
 
 
-    public void initDefaultCommand() {
+    @Override
+	public void initDefaultCommand() {
     		
     }
 

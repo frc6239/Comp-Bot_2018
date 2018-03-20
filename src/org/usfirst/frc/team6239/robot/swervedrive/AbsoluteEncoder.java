@@ -17,15 +17,18 @@ public class AbsoluteEncoder implements PIDSource {
     }
 
 
-    public void setPIDSourceType(PIDSourceType pidSourceType) {
+    @Override
+	public void setPIDSourceType(PIDSourceType pidSourceType) {
 
     }
 
-    public PIDSourceType getPIDSourceType() {
+    @Override
+	public PIDSourceType getPIDSourceType() {
         return PIDSourceType.kDisplacement;
     }
 
-    public double pidGet() {
+    @Override
+	public double pidGet() {
         return encoder.get();
     }
 }
