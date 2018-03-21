@@ -20,8 +20,8 @@ public class SwerveDrive {
 	public SwerveDrive(Spark[] speedController,Spark[] rotationalController,PIDController[] encController) {
 		this.frontRight =new   WheelDrive(rotationalController[0], speedController[0], encController[0]);
 		this.frontLeft =new    WheelDrive(rotationalController[1], speedController[1], encController[1]);
-		this.backLeft =new     WheelDrive(rotationalController[2], speedController[2], encController[2]);
-		this.backRight =new WheelDrive(rotationalController[3], speedController[3], encController[2]);
+		this.backLeft =new     WheelDrive(rotationalController[3], speedController[3], encController[3]);
+		this.backRight =new WheelDrive(rotationalController[2], speedController[2], encController[2]);
 		this.angleToDiagonal = Math.toDegrees(Math.atan2(L, W));
 		this.frontRight.setRAngle(-(90 - angleToDiagonal));
 		this.frontLeft.setRAngle(-(angleToDiagonal + 90));
