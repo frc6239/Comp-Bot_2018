@@ -7,29 +7,36 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class liftsubsystem extends Subsystem{
 		
 	
+	@Override
 	protected void initDefaultCommand() {
 		
 	}
 	
 	public void liftup() {
 		
-		Robot.robotmap.lifter.set(1);
-		Robot.robotmap.lifter2.set(0.75);
+		Robot.robotmap.lifterTop.set(1);
+		Robot.robotmap.lifterBottom.set(-1);
+
 		
 	}
 	
 	public void liftdown() {
 		
-		Robot.robotmap.lifter.set(-1);
-		Robot.robotmap.lifter2.set(-0.75);
-		
+		Robot.robotmap.lifterTop.set(-1);
+		Robot.robotmap.lifterBottom.set(0.75);
+
 	}
 
 	public void stop() {
 		
-		Robot.robotmap.grabber.set(0);
-		Robot.robotmap.lifter.set(0);
-		Robot.robotmap.lifter2.set(0);
+		Robot.robotmap.lifterTop.set(0);
+		Robot.robotmap.lifterBottom.set(0);
+		
+	}
+	
+	public void climbUp() {
+		
+		Robot.robotmap.lifterBottom.set(.8);
 		
 	}
 

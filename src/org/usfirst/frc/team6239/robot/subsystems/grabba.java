@@ -6,37 +6,31 @@ import org.usfirst.frc.team6239.robot.Robot;
 public class grabba extends Subsystem {
 
 
-    public void initDefaultCommand() {
+    @Override
+	public void initDefaultCommand() {
     		
     }
 
     public void in() {
-    	Robot.robotmap.grabber.set(0.5);
+    	Robot.robotmap.grabberLeft.set(-1);
+    	Robot.robotmap.grabberRight.set(1);
     }
 
     public void out() {
-    	Robot.robotmap.grabber.set(-0.5);
+    	Robot.robotmap.grabberLeft.set(0.7);
+    	Robot.robotmap.grabberRight.set(-0.7);
     }
 
     public void stop() {
-    	Robot.robotmap.grabber.set(0);
+    	Robot.robotmap.grabberLeft.set(0);
+    	Robot.robotmap.grabberRight.set(0);
     }
     
-    public void open() {
-    	Robot.robotmap.armEncoder.reset();
-    	Robot.armscontroller.enable();
-    	Robot.armscontroller.setSetpoint(20);
+    public void goLeft() {
+    	Robot.robotmap.grabberLeft.set(-.5);
     }
     
-    public void close() {
-    	Robot.robotmap.armEncoder.reset();
-    	Robot.armscontroller.enable();
-    	Robot.armscontroller.setSetpoint(-20);
-    }
-    
-    public void stoparm() {
-    	Robot.robotmap.armEncoder.reset();
-    	Robot.armscontroller.enable();
-    	Robot.armscontroller.setSetpoint(0);
+    public void goRight() {
+    	Robot.robotmap.grabberRight.set(.5);
     }
 }

@@ -1,7 +1,5 @@
 package org.usfirst.frc.team6239.robot.commands;
 
-import org.usfirst.frc.team6239.robot.Robot;
-
 import edu.wpi.first.wpilibj.command.Command;
 
 public class OpenCloseGrabber extends Command {
@@ -12,31 +10,36 @@ public class OpenCloseGrabber extends Command {
 		this.open = open;
 	}
 	
+	@Override
 	protected void initialize() {
 		if (open) {
-			Robot.grabber.open();
+			//Robot.grabber.
 		} else {
-			Robot.grabber.close();
+			//Robot.grabba.close();
 		}
 	}
 
+	@Override
 	protected void execute() {
 		if (open) {
-			Robot.grabber.open();
+			//Robot.grabber.open();
 		} else {
-			Robot.grabber.close();
+			//Robot.grabber.close();
 		}
 	}
 
+	@Override
 	protected void end() {
-		Robot.grabber.stoparm();
+		//Robot.grabber.stoparm();
 	}
 
 	
+	@Override
 	protected void interrupted() {
 		end();
 	}
 
+	@Override
 	protected boolean isFinished() {
 		return false;
 	}

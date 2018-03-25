@@ -1,14 +1,18 @@
-
 package org.usfirst.frc.team6239.robot;
 
+import edu.wpi.first.wpilibj.Timer;
+
+import org.usfirst.frc.team6239.robot.subsystems.DriveButtons;
 import org.usfirst.frc.team6239.robot.subsystems.DriveSubsystem;
 import org.usfirst.frc.team6239.robot.subsystems.grabba;
 import org.usfirst.frc.team6239.robot.subsystems.liftsubsystem;
+import org.usfirst.frc.team6239.robot.swervedrive.SwerveDrive;
 
+import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.NetworkTableEntry;
+import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.networktables.NetworkTable;
 
 
 
@@ -20,82 +24,77 @@ public class Robot extends IterativeRobot {
 	}
 
 
-	//declare subsystems
+
     public static RobotMap robotmap;
-    public static PIDController armscontroller;
-	public static grabba grabber;
+    public static grabba grabber;
     public static OI oi;
     public static DriveSubsystem DRIVE_SUB;
     public static liftsubsystem liftsub;
-    //public static NetworkTable table;  
-    public static double P;
-    //declare PIDControllers
-    //variables for drive, google it if you want to know what they mean
-    public static double wheelbase = 0;
-    public static double trackwidth = 0;
+    public static DriveButtons drivebuttons;
+	public static SwerveDrive driveTrain;
+	public static NetworkTable table;
+	public static NetworkTableInstance inst;
 	
+	public static NetworkTableEntry frontRightEnc;
+	public static NetworkTableEntry backLeftEnc;
+	public static NetworkTableEntry frontLeftEnc;
+	public static NetworkTableEntry backRightEnc;
+	public static NetworkTableEntry navXYaw;
+	
+	@Override
 	public void robotInit() {
+
 		robotmap = new RobotMap();
-		//armscontroller = new PIDController(1, 0, 0, robotmap.armEncoder, robotmap.movearms);
 		DRIVE_SUB = new DriveSubsystem();
 		liftsub = new liftsubsystem();
 		grabber = new grabba();
+		drivebuttons = new DriveButtons();
 		oi = new OI();
-		//table = NetworkTable.getTable("Smartdashboard");
-		System.out.println(DRIVE_SUB);
-		//Declare Subsystems in robotInit, like a constructor
-		//Declare PIDControllers in robotInit, /\
-		//RobotMap.driveTrain.setWheelbaseTrackwidth(wheelbase, trackwidth);
+		driveTrain = new SwerveDrive(robotmap.speedController,robotmap.rotationalController,robotmap.encController);
+		inst = NetworkTableInstance.getDefault();
+		table = inst.getTable("NET_TABLE");
 		
-		//table.putDouble("P_CONTROL", 0);
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		frontRightEnc = table.getEntry("frontRight");
+		backRightEnc = table.getEntry("backRight");
+		frontLeftEnc = table.getEntry("frontLeft");
+		backLeftEnc = table.getEntry("backLeft");
+		navXYaw = table.getEntry("Yaw");
 		
 		
 	}
-
 	
+	@Override
 	public void autonomousInit() {
-		
-		
-		
-	}
-
+		//.navX.resetDisplacement();
+		robotmap.navX.reset();
+		Timer.delay(4);
+		driveTrain.drive(0,- .7, 0);
+		Timer.delay(4.5);
+		driveTrain.drive(0, 0, 0);
+//		
+	};
 	
+	@Override
 	public void teleopInit() {
-		
-		
-		
+		//robotmap.navX.reset();
+		//robotmap.navX.resetDisplacement();
 	}
-
 	
+	@Override
 	public void robotPeriodic() {
 		Scheduler.getInstance().run();
 		
 		
 	}
-	
-	
-	
+
+	@Override
 	public void disabledInit() {
 		
 		
 		
 	}
 
-
+	@Override
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
 		
@@ -103,25 +102,23 @@ public class Robot extends IterativeRobot {
 	}
 
 
+	@Override
 	public void autonomousPeriodic() {
-		//Scheduler.getInstance().run();
 		
+		Scheduler.getInstance().run();
 		
 	}
 
 	
+	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
-		//P = table.getDouble("P_CONTROL", 0);
-		
+
+		frontRightEnc.setDouble(robotmap.frontRightRotEnc.get());
+		backLeftEnc.setDouble(robotmap.backLeftRotControl.get());
+		frontLeftEnc.setDouble(robotmap.frontLeftRotControl.get());
+		backRightEnc.setDouble(robotmap.backRightRotEnc.get());
+		navXYaw.setDouble(robotmap.navX.getAngle());
 		
 	}
-	
-
-
-	
-	
-	
-	//Robot
-	//speed = NetworkTable.getTable("Super awesome coolness Xtreme").getDouble("speed", 0);
 }

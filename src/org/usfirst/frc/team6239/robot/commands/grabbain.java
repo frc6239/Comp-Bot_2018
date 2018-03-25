@@ -7,19 +7,22 @@ import edu.wpi.first.wpilibj.command.Command;
 public class grabbain extends Command {
 
 	public grabbain() {
-		//requires(Robot.grabber);
+
 	}
 	
+	@Override
 	protected void execute() {
 		Robot.grabber.in();
 	}
 
 	
+	@Override
 	protected void interrupted() {
 		Robot.grabber.stop();
 		end();
 	}
 
+	@Override
 	protected boolean isFinished() {
 		return false;
 	}

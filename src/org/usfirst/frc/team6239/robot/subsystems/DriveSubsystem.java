@@ -7,18 +7,23 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class DriveSubsystem extends Subsystem {
 
+	@Override
 	protected void initDefaultCommand() {
-		//Link to command and keep it running throughout the match, so it doesn't need a
-		//button bound to it
+
 		setDefaultCommand(new DriveCommand());
-		//System.out.println("Working1");
+
 
 
 	}
-	//Start driving
+
 	public void drive() {
-		//System.out.println("i;fajalds;kjf;lkasjdsadg[oiasdjg[ijaseofdisa[d9if");
-		//Robot.robotmap.driveTrain.drive(0, 0, 0);
-		Robot.robotmap.driveTrain.drive(Robot.oi.stickcontrollerL.getY(), Robot.oi.stickcontrollerL.getX(), Robot.oi.stickcontrollerR.getX());
+
+		Robot.driveTrain.drive(Robot.oi.stickcontrollerL.getX(), Robot.oi.stickcontrollerL.getY(), Robot.oi.stickcontrollerR.getX());
+		
 	}
+
+	public void arms() {
+		Robot.robotmap.movearms.set(-(Robot.oi.gamepad.getY()*.1));
+	}
+
 }

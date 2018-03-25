@@ -8,43 +8,43 @@ public class WheelDrive {
 	public Spark angleMotor;
 	public Spark speedMotor;
 	public PIDController pidController;
-	
+	public double rotationalAngle;
 	private final double MAX_VOLTS = 5;
 	
 	public WheelDrive(Spark angleMotor, Spark speedMotor, PIDController pidController) {
 		this.angleMotor = angleMotor;
 		this.speedMotor = speedMotor;
-		//pidController = new PIDController (.01, .001, 0, new AbsoluteEncoder(encoder), this.angleMotor);
+
 		this.pidController = pidController;
 		this.pidController.setOutputRange(-1, 1);
 		this.pidController.setInputRange(-180f, 180f);
 	    this.pidController.setContinuous();
 	    this.pidController.enable();
-	    pidController.setSetpoint(0);
-	    //System.out.println("Wheeldrive working");
+	    this.pidController.setSetpoint(0);
+
 	}
 	
-	public void update (double speed, double angle) {
-	    speedMotor.set(speed);
-//	    if (angle < 0) {
-//	    	angle += 360;
-//	    }
-//	    if (angle > 360) {
-//	    	angle -= 360;
-//	    }
+	public void setSpeed (double speed) {
+		
+	    this.speedMotor.set((speed*.7));
 
-//	    double setpoint = angle * (MAX_VOLTS * 0.5) + (MAX_VOLTS * 0.5); // Optimization offset can be calculated here.
-//	    while (setpoint < 0) {
-//	        setpoint = 360 + setpoint;
-//	    }
-//	    while (setpoint > 360) {
-//	        setpoint = setpoint - 360;
-//	    }
 
-	    pidController.setSetpoint(angle);
-	    System.out.println(angle);
 	    
 	}
+	public void setAngle(double Ang){
+	this.pidController.setSetpoint(Ang);
 
+	}
+	public double getSpeed(){
+		return this.speedMotor.get();
+
+	}
+	public double getRAngle(){
+
+		return rotationalAngle;
+	}
+	public void setRAngle(double RA){
+		rotationalAngle = RA;
+	}
 
 }
