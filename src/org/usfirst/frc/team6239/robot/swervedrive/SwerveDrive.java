@@ -12,7 +12,7 @@ public class SwerveDrive {
 	public final double W = 25;
 	
 	public double orientationOffset;
-	public boolean isFieldCentric = true;
+	public static boolean isFieldCentric = true;
 	public double angleToDiagonal;
 	
 	WheelDrive frontRight, frontLeft, backLeft, backRight;
@@ -41,7 +41,7 @@ public class SwerveDrive {
 
 	}
 	
-	public void drive (double y1, double x1, double x2) {
+	public void drive (double x1, double y1, double x2) {
 
 
 		
@@ -77,8 +77,10 @@ public class SwerveDrive {
 			if (orientationOffset < 0) {
 				double x = orientationOffset+ 360 ;
 				orientationOffset = x;
+				
 			}
-			if(orientationOffset >= 360){ orientationOffset = 0;}
+			orientationOffset = orientationOffset % 360;
+
 			
 		} if (this.isFieldCentric == false) {
 			orientationOffset = 0;
@@ -89,14 +91,17 @@ public class SwerveDrive {
 		translationalYComponent *= -1;
 		
 
-	orientationOffset = orientationOffset % 360;
+	
+		
 
+
+		
 		double rotationMagnitude = Math.abs(rAxis);
 
 		translationalMagnitude = Math.sqrt(Math.pow(translationalYComponent, 2) + Math.pow(translationalXComponent, 2));
-		translationalAngle = Math.toDegrees(Math.atan2(translationalYComponent, translationalXComponent));
+		translationalAngle = Math.toDegrees(Math.atan2(translationalXComponent, translationalYComponent));
 
-		translationalAngle -= orientationOffset; 
+		translationalAngle += orientationOffset; 
 
 	translationalAngle = translationalAngle % 360;
 		if (translationalAngle < 0) {

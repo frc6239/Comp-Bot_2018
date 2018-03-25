@@ -12,13 +12,13 @@ public class grabba extends Subsystem {
     }
 
     public void in() {
-    	Robot.robotmap.grabberLeft.set(-0.7);
-    	Robot.robotmap.grabberRight.set(0.7);
+    	Robot.robotmap.grabberLeft.set(-1);
+    	Robot.robotmap.grabberRight.set(1);
     }
 
     public void out() {
-    	Robot.robotmap.grabberLeft.set(0.6);
-    	Robot.robotmap.grabberRight.set(-0.6);
+    	Robot.robotmap.grabberLeft.set(0.7);
+    	Robot.robotmap.grabberRight.set(-0.7);
     }
 
     public void stop() {

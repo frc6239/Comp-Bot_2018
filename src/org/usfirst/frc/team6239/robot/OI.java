@@ -1,5 +1,6 @@
 package org.usfirst.frc.team6239.robot;
 
+import org.usfirst.frc.team6239.robot.commands.ClimbUpCommand;
 import org.usfirst.frc.team6239.robot.commands.DriveButtonCommand;
 import org.usfirst.frc.team6239.robot.commands.GrabberLeft;
 import org.usfirst.frc.team6239.robot.commands.GrabberRight;
@@ -27,6 +28,7 @@ public class OI {
 	public Button grabRight;
 	public Button switchRobotMode;
 	public Button ResetNavX;
+	public Button climbUp;
 
 	OI() {
 		stickcontrollerL = new Joystick(1);
@@ -46,8 +48,10 @@ public class OI {
 		grabRight.whileHeld(new GrabberRight());
 		switchRobotMode = new JoystickButton(stickcontrollerR, 1);
 		switchRobotMode.whileHeld(new DriveButtonCommand());
-		ResetNavX = new JoystickButton(stickcontrollerL, 1);
-		ResetNavX.whenPressed(new ResetNavCommand());
+		//ResetNavX = new JoystickButton(stickcontrollerL, 1);
+		//ResetNavX.whenPressed(new ResetNavCommand());
+		climbUp = new JoystickButton(gamepad, 4);
+		climbUp.whileHeld(new ClimbUpCommand());
 		
 		
 	}

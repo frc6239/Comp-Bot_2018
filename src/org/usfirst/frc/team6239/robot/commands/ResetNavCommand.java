@@ -15,7 +15,7 @@ public class ResetNavCommand extends Command {
 	}
 	@Override
 	protected void execute() {
-		Robot.robotmap.navX.resetDisplacement();
+	//	Robot.robotmap.navX.resetDisplacement();
 		Robot.robotmap.navX.reset();
 
 	}

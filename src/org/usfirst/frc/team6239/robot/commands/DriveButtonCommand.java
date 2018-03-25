@@ -17,6 +17,8 @@ public class DriveButtonCommand extends Command {
 	@Override
 	protected void execute(){
 		
+	//	System.out.println(Robot.driveTrain.orientationOffset);
+		
 		
 		Robot.drivebuttons.robotCentric();
 		
@@ -24,7 +26,7 @@ public class DriveButtonCommand extends Command {
 	@Override
 	protected void end(){
 		Robot.drivebuttons.fieldCentric();
-
+		//System.out.println(Robot.driveTrain.orientationOffset);
 	}
 	
 

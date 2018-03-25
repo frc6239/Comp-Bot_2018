@@ -25,7 +25,8 @@ public class WheelDrive {
 	}
 	
 	public void setSpeed (double speed) {
-	    this.speedMotor.set(speed);
+		
+	    this.speedMotor.set((speed*.7));
 
 
 	    

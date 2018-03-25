@@ -65,18 +65,19 @@ public class Robot extends IterativeRobot {
 	
 	@Override
 	public void autonomousInit() {
-		robotmap.navX.resetDisplacement();
+		//.navX.resetDisplacement();
 		robotmap.navX.reset();
 		Timer.delay(4);
-		driveTrain.drive(.6, 0, 0);
-		Timer.delay(2);
+		driveTrain.drive(0,- .7, 0);
+		Timer.delay(4.5);
 		driveTrain.drive(0, 0, 0);
 //		
 	};
 	
 	@Override
 	public void teleopInit() {
-
+		//robotmap.navX.reset();
+		//robotmap.navX.resetDisplacement();
 	}
 	
 	@Override

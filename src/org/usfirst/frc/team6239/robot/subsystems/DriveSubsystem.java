@@ -23,7 +23,7 @@ public class DriveSubsystem extends Subsystem {
 	}
 
 	public void arms() {
-		Robot.robotmap.movearms.set(-Robot.oi.gamepad.getRawAxis(1) * .5);
+		Robot.robotmap.movearms.set(-(Robot.oi.gamepad.getY()*.1));
 	}
 
 }

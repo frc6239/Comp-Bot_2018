@@ -14,29 +14,29 @@ public class liftsubsystem extends Subsystem{
 	
 	public void liftup() {
 		
-		Robot.robotmap.lifterTop.set(.75);
-		Robot.robotmap.lifterBottom.set(-0.65);
+		Robot.robotmap.lifterTop.set(1);
+		Robot.robotmap.lifterBottom.set(-1);
 
 		
 	}
 	
 	public void liftdown() {
 		
-		Robot.robotmap.lifterTop.set(-.75);
-		Robot.robotmap.lifterBottom.set(0.45);
+		Robot.robotmap.lifterTop.set(-1);
+		Robot.robotmap.lifterBottom.set(0.75);
 
 	}
 
 	public void stop() {
 		
-		Robot.robotmap.lifterTop.set(-.2);
-		Robot.robotmap.lifterBottom.set(-.2);
+		Robot.robotmap.lifterTop.set(0);
+		Robot.robotmap.lifterBottom.set(0);
 		
 	}
 	
 	public void climbUp() {
 		
-		Robot.robotmap.lifterBottom.set(-.5);
+		Robot.robotmap.lifterBottom.set(.8);
 		
 	}
 
