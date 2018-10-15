@@ -41,7 +41,7 @@ public class OI {
 		grabin = new JoystickButton(gamepad, 3);
 		grabout = new JoystickButton(gamepad, 2);
 		grabout.whileHeld(new grabbaout());
-		grabin.whileHeld(new grabbain());
+		grabin.whileHeld(new grabbain()); 
 		grabLeft = new JoystickButton(gamepad, 7);
 		grabRight = new JoystickButton(gamepad, 8);
 		grabLeft.whileHeld(new GrabberLeft());
